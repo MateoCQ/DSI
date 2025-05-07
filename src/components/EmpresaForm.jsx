@@ -14,7 +14,15 @@ const EmpresaForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    
+    // Validación especial para el campo teléfono
+    if (name === 'telefono') {
+      // Solo permite números y elimina cualquier caracter no numérico
+      const soloNumeros = value.replace(/[^0-9]/g, '');
+      setFormData(prev => ({ ...prev, [name]: soloNumeros }));
+    } else {
+      setFormData(prev => ({ ...prev, [name]: value }));
+    }
   };
 
   const handleSubmit = (e) => {
@@ -31,7 +39,15 @@ const EmpresaForm = () => {
       <form onSubmit={handleSubmit}>
         <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} required />
         <input type="text" name="direccion" placeholder="Dirección" value={formData.direccion} onChange={handleChange} required />
-        <input type="tel" name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} required />
+        <input 
+          type="tel" 
+          name="telefono" 
+          placeholder="Teléfono" 
+          value={formData.telefono} 
+          onChange={handleChange} 
+          pattern="[0-9]*" // Esto ayuda en algunos navegadores
+          required 
+        />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
         <input type="text" name="sector" placeholder="Sector" value={formData.sector} onChange={handleChange} required />
         <textarea name="contacto" placeholder="Información de Contacto adicional" value={formData.contacto} onChange={handleChange} className="form-textarea"/>
