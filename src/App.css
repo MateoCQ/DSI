@@ -1,19 +1,19 @@
 /* Paleta de colores UTN San Francisco (aproximada) */
 :root {
   --utn-azul-oscuro: #003366;       /* Azul oscuro principal */
-  --utn-cian: #00aadd;            /* Cian o azul claro vibrante */
-  --utn-gris-claro: #f0f0f0;      /* Gris muy claro para fondos */
-  --utn-gris-medio: #cccccc;      /* Gris medio para bordes o texto secundario */
-  --utn-blanco: #ffffff;          /* Blanco */
-  --utn-cian-claro: #e0f7fa;     /* Variante clara del cian para fondos suaves */
-  --utn-azul-medio: #42a5f5;     /* Azul medio para acciones principales */
-  --utn-azul-claro: #bbdefb;     /* Azul claro para elementos secundarios */
-  --utn-verde-suave: #a7ffeb;    /* Un verde suave si se usa para acentos */
-  --utn-verde-oscuro: #00796b;    /* Un verde oscuro si se usa para acentos */
-  --utn-amarillo-claro: #fffde7;  /* Un amarillo muy claro si se usa para acentos */
-  --utn-amarillo-oscuro: #cddc39; /* Un amarillo verdoso si se usa para acentos */
-  --utn-naranja-claro: #ffe0b2;   /* Un naranja muy claro si se usa para acentos */
-  --utn-naranja-oscuro: #e65100;  /* Un naranja oscuro si se usa para acentos */
+  --utn-cian: #00aadd;             /* Cian o azul claro vibrante */
+  --utn-gris-claro: #f0f0f0;       /* Gris muy claro para fondos */
+  --utn-gris-medio: #cccccc;       /* Gris medio para bordes o texto secundario */
+  --utn-blanco: #ffffff;           /* Blanco */
+  --utn-cian-claro: #e0f7fa;       /* Variante clara del cian para fondos suaves */
+  --utn-azul-medio: #42a5f5;       /* Azul medio para acciones principales */
+  --utn-azul-claro: #bbdefb;       /* Azul claro para elementos secundarios */
+  --utn-verde-suave: #a7ffeb;       /* Un verde suave si se usa para acentos */
+  --utn-verde-oscuro: #00796b;     /* Un verde oscuro si se usa para acentos */
+  --utn-amarillo-claro: #fffde7;   /* Un amarillo muy claro si se usa para acentos */
+  --utn-amarillo-oscuro: #cddc39;  /* Un amarillo verdoso si se usa para acentos */
+  --utn-naranja-claro: #ffe0b2;    /* Un naranja muy claro si se usa para acentos */
+  --utn-naranja-oscuro: #e65100;   /* Un naranja oscuro si se usa para acentos */
 }
 
 body {
@@ -159,6 +159,7 @@ body {
   font-size: 1em;
   color: var(--utn-azul-oscuro); /* Texto azul oscuro */
   background-color: var(--utn-blanco); /* Fondo blanco */
+  resize: none;
 }
 
 .estudiante-form input:focus,
@@ -261,4 +262,112 @@ body {
   text-align: center;
   margin-top: 20px;
   color: var(--utn-gris-medio);
+}
+
+/* Estilos para la sección de competencias */
+.competencias-section {
+  margin: 15px 0;
+  background-color: var(--utn-cian-claro);
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 5px solid var(--utn-azul-medio);
+}
+
+.competencias-section label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--utn-azul-oscuro);
+  font-weight: bold;
+}
+
+.competencias-input {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.competencias-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid var(--utn-azul-claro);
+  border-radius: 4px;
+  font-size: 1em;
+  color: var(--utn-azul-oscuro);
+  background-color: var(--utn-blanco);
+}
+
+.competencias-input input:focus {
+  outline: none;
+  border-color: var(--utn-azul-medio);
+  box-shadow: 0 0 5px rgba(0, 170, 221, 0.5);
+}
+
+.competencias-input button {
+  background-color: var(--utn-azul-medio);
+  color: var(--utn-blanco);
+  border: none;
+  border-radius: 4px;
+  width: 40px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.competencias-input button:hover {
+  background-color: var(--utn-azul-oscuro);
+}
+
+.competencias-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.competencias-list li {
+  background-color: var(--utn-azul-claro);
+  padding: 6px 12px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+  color: var(--utn-azul-oscuro);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.competencias-list li button {
+  background: none;
+  border: none;
+  color: var(--utn-azul-oscuro);
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 4px;
+  transition: color 0.2s ease-in-out;
+}
+
+.competencias-list li button:hover {
+  color: var(--utn-naranja-oscuro);
+}
+
+/* Estilos para mostrar competencias en la lista de estudiantes */
+.estudiantes-list li span.competencias-preview {
+  display: block;
+  font-size: 0.8em;
+  color: var(--utn-cian);
+  margin-top: 4px;
+}
+
+/* Estilos para la sección de competencias en el detalle */
+.estudiante-detail .competencias-list {
+  margin-top: 8px;
+}
+
+.estudiante-detail .competencias-list li {
+  background-color: var(--utn-blanco);
+  border: 1px solid var(--utn-azul-claro);
+  padding: 6px 12px;
 }

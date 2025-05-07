@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation} from 'react-router-dom';
 import Home from './components/Home';
 import EmpresasList from './components/EmpresasList';
 import EmpresaForm from './components/EmpresaForm';
@@ -27,13 +27,33 @@ function App() {
   );
 }
 
-// Componente para envolver páginas con botón de retroceso
+// Componente WithBackButton mejorado
 function WithBackButton({ children }) {
   const navigate = useNavigate();
-  
+  const location = useLocation();
+
+  const handleGoBack = () => {
+    const currentPath = location.pathname;
+    
+    // Extraer la ruta base (primera parte de la URL)
+    const baseRoute = currentPath.split('/')[1];
+    
+    // Si estamos en una ruta de creación/edición/detalle
+    if (currentPath.split('/').length > 2) {
+      // Volver a la lista correspondiente (ej: /estudiantes/nuevo → /estudiantes)
+      navigate(`/${baseRoute}`);
+    } else if (baseRoute && baseRoute !== '') {
+      // Si estamos en una lista (ej: /estudiantes) → ir al home
+      navigate('/');
+    } else {
+      // Si estamos en home → no hacer nada o minimizar la app
+      window.history.back(); // O cualquier otra acción
+    }
+  };
+
   return (
     <div>
-      <button onClick={() => navigate(-1)} className="btn-back">
+      <button onClick={handleGoBack} className="btn-back">
         &larr; Atrás
       </button>
       {children}

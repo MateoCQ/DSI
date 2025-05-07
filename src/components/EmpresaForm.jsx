@@ -34,7 +34,7 @@ const EmpresaForm = () => {
         <input type="tel" name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
         <input type="text" name="sector" placeholder="Sector" value={formData.sector} onChange={handleChange} required />
-        <textarea name="contacto" placeholder="Información de Contacto adicional" value={formData.contacto} onChange={handleChange} required className="form-textarea"/>
+        <textarea name="contacto" placeholder="Información de Contacto adicional" value={formData.contacto} onChange={handleChange} className="form-textarea"/>
         <button type="submit">Guardar Empresa</button>
       </form>
     </div>
