@@ -22,6 +22,19 @@ const EstudianteDetail = () => {
         <p><strong>Teléfono:</strong> {estudiante.telefono}</p>
       </div>
       
+      <div className="detail-section">
+        <h3>Competencias</h3>
+        {estudiante.competencias && estudiante.competencias.length > 0 ? (
+          <ul>
+            {estudiante.competencias.map((competencia, index) => (
+              <li key={index}>{competencia}</li>
+            ))}
+          </ul>
+        ) : (
+          <p>No hay competencias registradas</p>
+        )}
+      </div>
+      
       <Link to="/estudiantes" className="btn-back">Volver a Estudiantes</Link>
     </div>
   );

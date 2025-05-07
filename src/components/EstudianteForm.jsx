@@ -9,12 +9,31 @@ const EstudianteForm = () => {
     edad: '',
     carrera: '',
     email: '',
-    telefono: ''
+    telefono: '',
+    competencias: [] // Ahora es un array vacío
   });
+  const [competenciaInput, setCompetenciaInput] = useState(''); // Estado temporal para el input
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handleAddCompetencia = () => {
+    if (competenciaInput.trim()) {
+      setFormData(prev => ({
+        ...prev,
+        competencias: [...prev.competencias, competenciaInput.trim()]
+      }));
+      setCompetenciaInput('');
+    }
+  };
+
+  const handleRemoveCompetencia = (index) => {
+    setFormData(prev => ({
+      ...prev,
+      competencias: prev.competencias.filter((_, i) => i !== index)
+    }));
   };
 
   const handleSubmit = (e) => {
@@ -35,6 +54,27 @@ const EstudianteForm = () => {
         <input type="text" name="carrera" placeholder="Carrera" value={formData.carrera} onChange={handleChange} required />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
         <input type="tel" name="telefono" placeholder="Teléfono" value={formData.telefono} onChange={handleChange} required />
+        
+        <div className="competencias-section">
+          <div className="competencias-input">
+            <input 
+              type="text" 
+              placeholder="Añadir competencia" 
+              value={competenciaInput}
+              onChange={(e) => setCompetenciaInput(e.target.value)}
+            />
+            <button type="button" onClick={handleAddCompetencia}>+</button>
+          </div>
+          <ul className="competencias-list">
+            {formData.competencias.map((competencia, index) => (
+              <li key={index}>
+                {competencia}
+                <button type="button" onClick={() => handleRemoveCompetencia(index)}>×</button>
+              </li>
+            ))}
+          </ul>
+        </div>
+
         <button type="submit">Guardar Estudiante</button>
       </form>
     </div>

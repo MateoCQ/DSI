@@ -22,6 +22,9 @@ const EstudiantesList = () => {
             <li key={estudiante.id}>
               <Link to={`/estudiantes/${estudiante.id}`}>
                 <strong>{estudiante.nombre} {estudiante.apellido}</strong> - {estudiante.carrera}
+                {estudiante.competencias && estudiante.competencias.length > 0 && (
+                  <span> ({estudiante.competencias.slice(0, 2).join(', ')}{estudiante.competencias.length > 2 ? '...' : ''})</span>
+                )}
               </Link>
             </li>
           ))}
