@@ -21,7 +21,7 @@ const EmpresaDetail = () => {
         <h3>Contacto</h3>
         <p><strong>Teléfono:</strong> {empresa.telefono}</p>
         <p><strong>Email:</strong> {empresa.email}</p>
-        <p><strong>Información Adicional:</strong></p>
+        <p><strong>Información de Contacto adicional:</strong></p>
         <div className="contact-info">{empresa.contacto}</div>
       </div>
       
