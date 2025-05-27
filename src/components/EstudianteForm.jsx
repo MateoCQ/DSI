@@ -4,23 +4,25 @@ import { useNavigate } from 'react-router-dom';
 const EstudianteForm = () => {
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
+    legajo: '',
     nombre: '',
     apellido: '',
     edad: '',
     carrera: '',
     email: '',
     telefono: '',
-    competencias: [] // Ahora es un array vacío
+    competencias: []
   });
-  const [competenciaInput, setCompetenciaInput] = useState(''); // Estado temporal para el input
+  const [competenciaInput, setCompetenciaInput] = useState('');
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     
-    // Validación especial para el campo teléfono
     if (name === 'telefono') {
-      // Solo permite números y elimina cualquier caracter no numérico
       const soloNumeros = value.replace(/[^0-9]/g, '');
+      setFormData(prev => ({ ...prev, [name]: soloNumeros }));
+    } else if (name === 'legajo') {
+      const soloNumeros = value.replace(/[^0-9]/g, '').slice(0, 5);
       setFormData(prev => ({ ...prev, [name]: soloNumeros }));
     } else {
       setFormData(prev => ({ ...prev, [name]: value }));
@@ -56,6 +58,16 @@ const EstudianteForm = () => {
     <div className="estudiante-form">
       <h2>Registrar Nuevo Estudiante</h2>
       <form onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          name="legajo" 
+          placeholder="Legajo (5 dígitos)" 
+          value={formData.legajo} 
+          onChange={handleChange} 
+          pattern="[0-9]{5}"
+          title="El legajo debe contener exactamente 5 dígitos"
+          required 
+        />
         <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} required />
         <input type="text" name="apellido" placeholder="Apellido" value={formData.apellido} onChange={handleChange} required />
         <input type="number" name="edad" placeholder="Edad" value={formData.edad} onChange={handleChange} required />
@@ -67,7 +79,7 @@ const EstudianteForm = () => {
           placeholder="Teléfono" 
           value={formData.telefono} 
           onChange={handleChange} 
-          pattern="[0-9]*" // Esto ayuda en algunos navegadores
+          pattern="[0-9]*"
           required 
         />
         

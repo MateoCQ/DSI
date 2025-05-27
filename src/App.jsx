@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation} from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import Home from './components/Home';
 import EmpresasList from './components/EmpresasList';
 import EmpresaForm from './components/EmpresaForm';
@@ -7,6 +7,9 @@ import EmpresaDetail from './components/EmpresaDetail';
 import EstudiantesList from './components/EstudiantesList';
 import EstudianteForm from './components/EstudianteForm';
 import EstudianteDetail from './components/EstudianteDetail';
+import PuestosList from './components/PuestosList';
+import PuestoForm from './components/PuestoForm';
+import PuestoDetail from './components/PuestoDetail';
 import './App.css';
 
 function App() {
@@ -15,12 +18,21 @@ function App() {
       <div className="app">
         <Routes>
           <Route path="/" element={<Home />} />
+          
+          {/* Rutas de Empresas */}
           <Route path="/empresas" element={<WithBackButton><EmpresasList /></WithBackButton>} />
           <Route path="/empresas/nueva" element={<WithBackButton><EmpresaForm /></WithBackButton>} />
           <Route path="/empresas/:id" element={<WithBackButton><EmpresaDetail /></WithBackButton>} />
+          
+          {/* Rutas de Estudiantes */}
           <Route path="/estudiantes" element={<WithBackButton><EstudiantesList /></WithBackButton>} />
           <Route path="/estudiantes/nuevo" element={<WithBackButton><EstudianteForm /></WithBackButton>} />
           <Route path="/estudiantes/:id" element={<WithBackButton><EstudianteDetail /></WithBackButton>} />
+          
+          {/* Nuevas Rutas de Puestos */}
+          <Route path="/puestos" element={<WithBackButton><PuestosList /></WithBackButton>} />
+          <Route path="/puestos/nuevo" element={<WithBackButton><PuestoForm /></WithBackButton>} />
+          <Route path="/puestos/:id" element={<WithBackButton><PuestoDetail /></WithBackButton>} />
         </Routes>
       </div>
     </Router>

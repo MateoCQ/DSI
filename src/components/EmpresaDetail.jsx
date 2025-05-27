@@ -24,8 +24,6 @@ const EmpresaDetail = () => {
         <p><strong>Información de Contacto adicional:</strong></p>
         <div className="contact-info">{empresa.contacto}</div>
       </div>
-      
-      <Link to="/empresas" className="btn-back">Volver a Empresas</Link>
     </div>
   );
 };

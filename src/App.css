@@ -51,14 +51,14 @@ body {
 }
 
 .nav-card {
-  background-color: var(--utn-cian-claro); /* Fondo cian claro */
-  color: var(--utn-azul-oscuro); /* Texto azul oscuro */
+  background-color: var(--utn-azul-oscuro); /* Fondo cian claro */
+  color: white; /* Texto azul oscuro */
   padding: 20px;
   border-radius: 6px;
   text-decoration: none;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  border-left: 5px solid var(--utn-cian); /* Barra lateral cian */
+  border-left: 5px solid var(--utn-gris-medio); /* Barra lateral cian */
 }
 
 .nav-card:hover {
@@ -69,7 +69,7 @@ body {
 .nav-card h2 {
   margin-top: 0;
   margin-bottom: 10px;
-  color: var(--utn-azul-oscuro);
+  color: white;
 }
 
 .nav-card p {
@@ -78,7 +78,7 @@ body {
   color: var(--utn-cian); /* Texto secundario cian */
 }
 
-/* Estilos para listas */
+/* Estilos para listas (Empresas y Estudiantes) */
 .estudiantes-list, .empresas-list {
   padding: 30px;
 }
@@ -128,7 +128,7 @@ body {
   color: var(--utn-azul-oscuro); /* Nombre en negrita azul oscuro */
 }
 
-/* Estilos para formularios */
+/* Estilos para formularios (Estudiantes y Empresas) */
 .estudiante-form, .empresa-form {
   padding: 30px;
 }
@@ -186,7 +186,7 @@ body {
   background-color: #1e88e5; /* Azul ligeramente más oscuro al pasar el mouse */
 }
 
-/* Estilos para detalles */
+/* Estilos para detalles (Estudiantes y Empresas) */
 .estudiante-detail, .empresa-detail {
   padding: 30px;
 }
@@ -231,8 +231,8 @@ body {
 
 /* Botón de retroceso */
 .btn-back {
-  background-color: var(--utn-naranja-claro); /* Fondo naranja claro (un posible acento) */
-  color: var(--utn-naranja-oscuro); /* Texto naranja oscuro */
+  background-color: var(--utn-azul-oscuro); /* Fondo naranja claro (un posible acento) */
+  color: white; /* Texto naranja oscuro */
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
@@ -243,7 +243,7 @@ body {
 }
 
 .btn-back:hover {
-  background-color: #ffb300; /* Naranja ligeramente más oscuro al pasar el mouse */
+  background-color: var(--utn-azul-medio); /* Naranja ligeramente más oscuro al pasar el mouse */
 }
 
 /* Centrado de "Registrar Estudiante" y "No hay estudiantes registrados" */
@@ -361,7 +361,7 @@ body {
   margin-top: 4px;
 }
 
-/* Estilos para la sección de competencias en el detalle */
+/* Estilos para la sección de competencias en el detalle del estudiante */
 .estudiante-detail .competencias-list {
   margin-top: 8px;
 }
@@ -370,4 +370,412 @@ body {
   background-color: var(--utn-blanco);
   border: 1px solid var(--utn-azul-claro);
   padding: 6px 12px;
+}
+
+/* Estilos para PuestosList */
+.puestos-list-container {
+  padding: 30px;
+}
+
+.puestos-header {
+  display: flex;
+  flex-direction: column; /* Apila título y botón verticalmente */
+  align-items: center; /* Centra los elementos horizontalmente */
+  margin-bottom: 20px;
+  text-align: center; /* Asegura que el texto del título se centre */
+}
+
+.puestos-header h2 {
+  color: var(--utn-azul-oscuro);
+  margin-bottom: 15px; /* Espacio entre el título y el botón */
+}
+
+.add-puesto-btn {
+  background-color: var(--utn-cian);
+  color: var(--utn-blanco);
+  padding: 10px 15px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+  font-weight: bold;
+  display: inline-block; /* Asegura que el enlace se comporte como un bloque para los márgenes */
+}
+
+.add-puesto-btn:hover {
+  background-color: #0088cc; /* Cian ligeramente más oscuro */
+}
+
+.puestos-table-container {
+  overflow-x: auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.puestos-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: var(--utn-blanco);
+}
+
+.puestos-table thead {
+  background-color: var(--utn-azul-oscuro);
+}
+
+.puestos-table th,
+.puestos-table td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid var(--utn-gris-claro);
+}
+
+.puestos-table th {
+    color: var(--utn-blanco); /* ¡Asegura que el texto del encabezado sea blanco! */
+    font-weight: bold; /* Asegura que los títulos de las columnas sean negritas */
+}
+
+.puestos-table td {
+  color: var(--utn-azul-oscuro); /* Color por defecto para el texto de las celdas del cuerpo */
+}
+
+.puestos-table th:first-child {
+  border-top-left-radius: 8px;
+}
+.puestos-table th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.puesto-row {
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.puesto-row:hover {
+  background-color: var(--utn-cian-claro); /* Fondo cian claro al pasar el mouse */
+}
+
+.puesto-nombre {
+  font-weight: bold;
+  color: var(--utn-azul-oscuro);
+}
+
+.empresa-cell {
+  color: var(--utn-azul-oscuro);
+  font-size: 0.95em;
+}
+
+.estado-cell {
+  text-align: center; /* Centrar el badge de estado */
+}
+
+/* Estilos para los badges de estado (nuevas clases para el nuevo componente) */
+.estado-badge {
+  display: inline-block;
+  padding: 0.4em 0.8em;
+  border-radius: 0.25rem;
+  font-size: 0.75em;
+  font-weight: bold;
+  text-align: center;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: var(--utn-blanco);
+}
+
+.estado-badge.disponible {
+  background-color: var(--utn-verde-oscuro); /* Verde oscuro para disponible */
+}
+
+.estado-badge.ocupado {
+  background-color: var(--utn-naranja-oscuro); /* Naranja oscuro para ocupado */
+}
+
+.estado-badge.cerrado {
+  background-color: #dc3545; /* Rojo para cerrado */
+}
+
+.empty-row td {
+  text-align: center;
+  color: var(--utn-gris-medio);
+  padding: 20px;
+}
+
+.empty-message a {
+  color: var(--utn-cian);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.empty-message a:hover {
+  text-decoration: underline;
+}
+
+/* Estilos para PuestoForm (mantienen los estilos previos, solo se añaden aquí para cohesión) */
+.puesto-form {
+  padding: 30px;
+}
+
+.puesto-form h2 {
+  text-align: center;
+  color: var(--utn-azul-oscuro);
+  margin-bottom: 20px;
+}
+
+.puesto-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.puesto-form input[type="text"],
+.puesto-form textarea,
+.puesto-form select {
+  padding: 12px;
+  border: 1px solid var(--utn-azul-claro);
+  border-radius: 4px;
+  font-size: 1em;
+  color: var(--utn-azul-oscuro);
+  background-color: var(--utn-blanco);
+  resize: none;
+}
+
+.puesto-form input:focus,
+.puesto-form textarea:focus,
+.puesto-form select:focus {
+  outline: none;
+  border-color: var(--utn-azul-medio);
+  box-shadow: 0 0 5px rgba(0, 170, 221, 0.5);
+}
+
+.puesto-form .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: var(--utn-azul-oscuro);
+}
+
+.puesto-form button[type="submit"] {
+  background-color: var(--utn-azul-medio);
+  color: var(--utn-blanco);
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.puesto-form button[type="submit"]:hover {
+  background-color: #1e88e5;
+}
+
+.puesto-form .competencias-section {
+  margin: 15px 0;
+  background-color: var(--utn-cian-claro);
+  padding: 15px;
+  border-radius: 4px;
+  border-left: 5px solid var(--utn-azul-medio);
+}
+
+.puesto-form .competencias-section label {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--utn-azul-oscuro);
+  font-weight: bold;
+}
+
+.puesto-form .competencias-input {
+  display: flex;
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.puesto-form .competencias-input input {
+  flex-grow: 1;
+  padding: 10px;
+  border: 1px solid var(--utn-azul-claro);
+  border-radius: 4px;
+  font-size: 1em;
+  color: var(--utn-azul-oscuro);
+  background-color: var(--utn-blanco);
+}
+
+.puesto-form .competencias-input input:focus {
+  outline: none;
+  border-color: var(--utn-azul-medio);
+  box-shadow: 0 0 5px rgba(0, 170, 221, 0.5);
+}
+
+.puesto-form .competencias-input button {
+  background-color: var(--utn-azul-medio);
+  color: var(--utn-blanco);
+  border: none;
+  border-radius: 4px;
+  width: 40px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.puesto-form .competencias-input button:hover {
+  background-color: var(--utn-azul-oscuro);
+}
+
+.puesto-form .competencias-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.puesto-form .competencias-list li {
+  background-color: var(--utn-azul-claro);
+  padding: 6px 12px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.9em;
+  color: var(--utn-azul-oscuro);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.puesto-form .competencias-list li button {
+  background: none;
+  border: none;
+  color: var(--utn-azul-oscuro);
+  cursor: pointer;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1;
+  margin-left: 4px;
+  transition: color 0.2s ease-in-out;
+}
+
+.puesto-form .competencias-list li button:hover {
+  color: var(--utn-naranja-oscuro);
+}
+
+/* Estilos para PuestoDetail (mantienen los estilos previos, solo se añaden aquí para cohesión) */
+.puesto-detail {
+  padding: 30px;
+}
+
+.puesto-detail .header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.puesto-detail h2 {
+  color: var(--utn-azul-oscuro);
+  margin-bottom: 10px;
+}
+
+.puesto-detail .status .estado-badge {
+  margin-top: 5px;
+  font-size: 1em;
+  padding: 0.6em 1em;
+}
+
+.puesto-detail .section {
+  background-color: var(--utn-cian-claro);
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  border-left: 5px solid var(--utn-cian);
+}
+
+.puesto-detail .section h3 {
+  color: var(--utn-azul-oscuro);
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.puesto-detail .section p {
+  color: var(--utn-azul-oscuro);
+  line-height: 1.6;
+}
+
+.puesto-detail .empresa-info {
+  margin-top: 10px;
+}
+
+.puesto-detail .empresa-link {
+  text-decoration: none;
+  color: var(--utn-azul-oscuro);
+  transition: color 0.2s ease-in-out;
+}
+
+.puesto-detail .empresa-link:hover {
+  color: var(--utn-cian);
+}
+
+.puesto-detail .empresa-info h4 {
+  margin-bottom: 5px;
+  color: var(--utn-azul-oscuro);
+}
+
+.puesto-detail .empresa-info p {
+  margin-bottom: 5px;
+  font-size: 0.9em;
+  color: var(--utn-gris-medio);
+}
+
+.puesto-detail .competencias-list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.puesto-detail .competencias-list li {
+  background-color: var(--utn-blanco);
+  border: 1px solid var(--utn-azul-claro);
+  padding: 6px 12px;
+  border-radius: 15px;
+  font-size: 0.9em;
+  color: var(--utn-azul-oscuro);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.puesto-detail .actions {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.puesto-detail .btn-primary {
+  background-color: var(--utn-azul-medio);
+  color: var(--utn-blanco);
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.puesto-detail .btn-primary:hover {
+  background-color: #1e88e5;
+}
+
+/* Estilos para mensajes de carga y error */
+.loading, .error {
+  text-align: center;
+  padding: 20px;
+  color: var(--utn-gris-medio);
+  font-size: 1.1em;
+}
+
+.utn-logo {
+  display: block; /* Para centrar la imagen */
+  max-width: 150px; /* Tamaño máximo del logo, ajústalo según necesites */
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin: 0 auto 30px auto; /* Centra la imagen horizontalmente y añade un margen inferior */
+  padding: 10px; /* Pequeño padding alrededor del logo */
+  background-color: var(--utn-blanco); /* Fondo blanco para el logo si lo necesita */
+  border-radius: 8px; /* Bordes ligeramente redondeados */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Sombra sutil para destacarlo */
 }

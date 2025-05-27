@@ -34,8 +34,6 @@ const EstudianteDetail = () => {
           <p>No hay competencias registradas</p>
         )}
       </div>
-      
-      <Link to="/estudiantes" className="btn-back">Volver a Estudiantes</Link>
     </div>
   );
 };
