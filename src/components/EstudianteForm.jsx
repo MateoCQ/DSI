@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { generateId, ID_PREFIXES } from './IdGenerator';
 
 const EstudianteForm = () => {
   const navigate = useNavigate();
@@ -49,7 +50,10 @@ const EstudianteForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const estudiantes = JSON.parse(localStorage.getItem('estudiantes')) || [];
-    const nuevosEstudiantes = [...estudiantes, { ...formData, id: Date.now() }];
+    const nuevosEstudiantes = [...estudiantes, { 
+      ...formData, 
+      id: generateId(ID_PREFIXES.ESTUDIANTE)
+    }];
     localStorage.setItem('estudiantes', JSON.stringify(nuevosEstudiantes));
     navigate('/estudiantes');
   };

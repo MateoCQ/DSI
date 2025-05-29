@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { generateId, ID_PREFIXES } from './IdGenerator';
 
 const EmpresaForm = () => {
   const navigate = useNavigate();
@@ -14,10 +15,7 @@ const EmpresaForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    
-    // Validación especial para el campo teléfono
     if (name === 'telefono') {
-      // Solo permite números y elimina cualquier caracter no numérico
       const soloNumeros = value.replace(/[^0-9]/g, '');
       setFormData(prev => ({ ...prev, [name]: soloNumeros }));
     } else {
@@ -28,7 +26,10 @@ const EmpresaForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
-    const nuevasEmpresas = [...empresas, { ...formData, id: Date.now() }];
+    const nuevasEmpresas = [...empresas, { 
+      ...formData, 
+      id: generateId(ID_PREFIXES.EMPRESA)
+    }];
     localStorage.setItem('empresas', JSON.stringify(nuevasEmpresas));
     navigate('/empresas');
   };
@@ -45,7 +46,7 @@ const EmpresaForm = () => {
           placeholder="Teléfono" 
           value={formData.telefono} 
           onChange={handleChange} 
-          pattern="[0-9]*" // Esto ayuda en algunos navegadores
+          pattern="[0-9]*"
           required 
         />
         <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />

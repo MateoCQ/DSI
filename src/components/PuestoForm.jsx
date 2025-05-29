@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { generateId, ID_PREFIXES } from './IdGenerator';
 
 const PuestoForm = () => {
   const navigate = useNavigate();
@@ -8,7 +9,7 @@ const PuestoForm = () => {
     descripcion: '',
     competencias: [],
     empresaId: '',
-    estado: 'disponible' // Estado por defecto
+    estado: 'disponible'
   });
   const [empresas, setEmpresas] = useState([]);
   const [competenciaInput, setCompetenciaInput] = useState('');
@@ -45,8 +46,7 @@ const PuestoForm = () => {
     const puestos = JSON.parse(localStorage.getItem('puestos')) || [];
     const nuevosPuestos = [...puestos, { 
       ...formData, 
-      id: Date.now(),
-      estado: 'disponible' // Aseguramos que siempre se guarde con estado disponible
+      id: generateId(ID_PREFIXES.PUESTO)
     }];
     localStorage.setItem('puestos', JSON.stringify(nuevosPuestos));
     navigate('/puestos');

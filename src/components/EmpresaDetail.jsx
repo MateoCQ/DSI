@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 const EmpresaDetail = () => {
   const { id } = useParams();
   const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
-  const empresa = empresas.find(e => e.id === Number(id));
+  const empresa = empresas.find(e => e.id === id);
 
   if (!empresa) return <div>Empresa no encontrada</div>;
 

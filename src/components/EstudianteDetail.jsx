@@ -4,7 +4,7 @@ import { useParams, Link } from 'react-router-dom';
 const EstudianteDetail = () => {
   const { id } = useParams();
   const estudiantes = JSON.parse(localStorage.getItem('estudiantes')) || [];
-  const estudiante = estudiantes.find(e => e.id === Number(id));
+  const estudiante = estudiantes.find(e => e.id === id);
 
   if (!estudiante) return <div>Estudiante no encontrado</div>;
 

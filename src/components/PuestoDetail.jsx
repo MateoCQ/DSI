@@ -8,14 +8,12 @@ const PuestoDetail = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Cargar datos del puesto
     const puestos = JSON.parse(localStorage.getItem('puestos')) || [];
-    const puestoEncontrado = puestos.find(p => p.id === parseInt(id));
+    const puestoEncontrado = puestos.find(p => p.id === id);
     
     if (puestoEncontrado) {
       setPuesto(puestoEncontrado);
       
-      // Cargar datos de la empresa asociada
       const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
       const empresaAsociada = empresas.find(e => e.id === puestoEncontrado.empresaId);
       setEmpresa(empresaAsociada);

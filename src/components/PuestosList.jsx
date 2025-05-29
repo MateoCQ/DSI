@@ -21,7 +21,7 @@ const PuestosList = () => {
   }, []);
 
   const getNombreEmpresa = (empresaId) => {
-    const empresa = empresas[empresaId] || empresas[parseInt(empresaId)];
+    const empresa = empresas[empresaId];
     return empresa ? empresa.nombre : `Empresa no encontrada (ID: ${empresaId})`;
   };
 
