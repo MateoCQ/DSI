@@ -20,6 +20,10 @@ const Home = () => {
         <Link to="/puestos" className="nav-card">
           <h2>Puestos</h2>
         </Link>
+
+        <Link to="/pasantias" className="nav-card">
+          <h2>Pasantías</h2>
+        </Link>
       </div>
     </div>
   );

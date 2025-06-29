@@ -38,22 +38,81 @@ const EmpresaForm = () => {
     <div className="empresa-form">
       <h2>Registrar Nueva Empresa</h2>
       <form onSubmit={handleSubmit}>
-        <input type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} required />
-        <input type="text" name="direccion" placeholder="Dirección" value={formData.direccion} onChange={handleChange} required />
-        <input 
-          type="tel" 
-          name="telefono" 
-          placeholder="Teléfono" 
-          value={formData.telefono} 
-          onChange={handleChange} 
-          pattern="[0-9]*"
-          required 
-        />
-        <input type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
-        <input type="text" name="sector" placeholder="Sector" value={formData.sector} onChange={handleChange} required />
-        <textarea name="contacto" placeholder="Información de Contacto adicional" value={formData.contacto} onChange={handleChange} className="form-textarea"/>
-        <button type="submit">Guardar Empresa</button>
-      </form>
+  <div className="form-group">
+    <label htmlFor="nombre">Nombre</label>
+    <input 
+      id="nombre"
+      type="text" 
+      name="nombre" 
+      value={formData.nombre} 
+      onChange={handleChange} 
+      required 
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="direccion">Dirección</label>
+    <input 
+      id="direccion"
+      type="text" 
+      name="direccion" 
+      value={formData.direccion} 
+      onChange={handleChange} 
+      required 
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="telefono">Teléfono</label>
+    <input 
+      id="telefono"
+      type="tel" 
+      name="telefono" 
+      value={formData.telefono} 
+      onChange={handleChange} 
+      pattern="[0-9]*"
+      required 
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="email">Email</label>
+    <input 
+      id="email"
+      type="email" 
+      name="email" 
+      value={formData.email} 
+      onChange={handleChange} 
+      required 
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="sector">Sector</label>
+    <input 
+      id="sector"
+      type="text" 
+      name="sector" 
+      value={formData.sector} 
+      onChange={handleChange} 
+      required 
+    />
+  </div>
+
+  <div className="form-group">
+    <label htmlFor="contacto">Información de Contacto adicional</label>
+    <textarea 
+      id="contacto"
+      name="contacto" 
+      value={formData.contacto} 
+      onChange={handleChange} 
+      className="form-textarea"
+    />
+  </div>
+
+  <button type="submit">Guardar Empresa</button>
+</form>
+
     </div>
   );
 };

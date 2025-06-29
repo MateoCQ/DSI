@@ -11,6 +11,9 @@ import PuestosList from './components/PuestosList';
 import PuestoForm from './components/PuestoForm';
 import PuestoDetail from './components/PuestoDetail';
 import './App.css';
+import PasantiaDetail from './components/PasantiaDetail';
+import PasantiaForm from './components/PasantiaForm';
+import PasantiasList from './components/PasantiaList';
 
 function App() {
   return (
@@ -33,6 +36,11 @@ function App() {
           <Route path="/puestos" element={<WithBackButton><PuestosList /></WithBackButton>} />
           <Route path="/puestos/nuevo" element={<WithBackButton><PuestoForm /></WithBackButton>} />
           <Route path="/puestos/:id" element={<WithBackButton><PuestoDetail /></WithBackButton>} />
+
+          <Route path="/pasantias" element={<WithBackButton><PasantiasList /></WithBackButton>} />
+          <Route path="/pasantias/nueva" element={<WithBackButton><PasantiaForm /></WithBackButton>} />
+          <Route path="/pasantias/:id" element={<WithBackButton><PasantiaDetail /></WithBackButton>} />
+
         </Routes>
       </div>
     </Router>
