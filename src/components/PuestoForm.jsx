@@ -44,8 +44,8 @@ const PuestoForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const puestos = JSON.parse(localStorage.getItem('puestos')) || [];
-    const nuevosPuestos = [...puestos, { 
-      ...formData, 
+    const nuevosPuestos = [...puestos, {
+      ...formData,
       id: generateId(ID_PREFIXES.PUESTO)
     }];
     localStorage.setItem('puestos', JSON.stringify(nuevosPuestos));
@@ -53,75 +53,101 @@ const PuestoForm = () => {
   };
 
   return (
-    <div className="puesto-form">
+    <div className="puesto-form"> {/* Added parent div with class */}
       <h2>Registrar Nuevo Puesto</h2>
       <form onSubmit={handleSubmit}>
-  <div className="form-group">
-    <label htmlFor="nombre">Nombre del Puesto</label>
-    <input 
-      id="nombre"
-      type="text" 
-      name="nombre" 
-      value={formData.nombre} 
-      onChange={handleChange} 
-      required 
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre del Puesto</label>
+          <input
+            id="nombre"
+            type="text"
+            name="nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            required
+            className="form-control" // Added class
+          />
+        </div>
 
-  <div className="form-group">
-    <label htmlFor="descripcion">Descripción del Puesto</label>
-    <textarea 
-      id="descripcion"
-      name="descripcion" 
-      value={formData.descripcion} 
-      onChange={handleChange} 
-      required 
-      className="form-textarea"
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="descripcion">Descripción del Puesto</label>
+          <textarea
+            id="descripcion"
+            name="descripcion"
+            value={formData.descripcion}
+            onChange={handleChange}
+            required
+            className="form-control" // Changed from form-textarea to form-control
+          />
+        </div>
 
-  <div className="form-group">
-    <label htmlFor="empresaId">Empresa</label>
-    <select 
-      id="empresaId"
-      name="empresaId" 
-      value={formData.empresaId} 
-      onChange={handleChange} 
-      required
-    >
-      <option value="">Seleccione una empresa</option>
-      {empresas.map(empresa => (
-        <option key={empresa.id} value={empresa.id}>
-          {empresa.nombre}
-        </option>
-      ))}
-    </select>
-  </div>
+        <div className="form-group">
+          <label htmlFor="empresaId">Empresa</label>
+          {empresas.length === 0 ? (
+            <div className="no-options alert alert-warning">
+              No hay empresas registradas.
+              <button
+                type="button"
+                className="btn btn-link"
+                onClick={() => navigate('/empresas/nuevo')}
+              >
+                Crear nueva empresa
+              </button>
+            </div>
+          ) : (
+            <select
+              id="empresaId"
+              name="empresaId"
+              value={formData.empresaId}
+              onChange={handleChange}
+              required
+              className="form-control" // Added class
+            >
+              <option value="">Seleccione una empresa</option>
+              {empresas.map(empresa => (
+                <option key={empresa.id} value={empresa.id}>
+                  {empresa.nombre}
+                </option>
+              ))}
+            </select>
+          )}
+        </div>
 
-  <div className="competencias-section">
-    <label>Competencias requeridas</label>
-    <div className="competencias-input">
-      <input 
-        type="text" 
-        placeholder="Añadir competencia" 
-        value={competenciaInput}
-        onChange={(e) => setCompetenciaInput(e.target.value)}
-      />
-      <button type="button" onClick={handleAddCompetencia}>+</button>
-    </div>
-    <ul className="competencias-list">
-      {formData.competencias.map((competencia, index) => (
-        <li key={index}>
-          {competencia}
-          <button type="button" onClick={() => handleRemoveCompetencia(index)}>×</button>
-        </li>
-      ))}
-    </ul>
-  </div>
+        <div className="competencias-section">
+          <label>Competencias requeridas</label>
+          <div className="competencias-input">
+            <input
+              type="text"
+              placeholder="Añadir competencia"
+              value={competenciaInput}
+              onChange={(e) => setCompetenciaInput(e.target.value)}
+              className="form-control" // Added class
+            />
+            <button type="button" onClick={handleAddCompetencia}>+</button>
+          </div>
+          <ul className="competencias-list">
+            {formData.competencias.map((competencia, index) => (
+              <li key={index}>
+                {competencia}
+                <button type="button" onClick={() => handleRemoveCompetencia(index)}>×</button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
-  <button type="submit">Guardar Puesto</button>
-</form>
-
+        <div className="form-actions"> {/* Added form-actions div */}
+          <button type="submit" className="btn btn-primary">
+            Guardar Puesto
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary" // Added secondary button
+            onClick={() => navigate('/puestos')}
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

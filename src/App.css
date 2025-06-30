@@ -1,19 +1,19 @@
 /* Paleta de colores UTN San Francisco (aproximada) */
 :root {
-  --utn-azul-oscuro: #003366;          /* Azul oscuro principal */
-  --utn-cian: #00aadd;                 /* Cian o azul claro vibrante */
-  --utn-gris-claro: #f0f0f0;          /* Gris muy claro para fondos */
-  --utn-gris-medio: #cccccc;          /* Gris medio para bordes o texto secundario */
-  --utn-blanco: #ffffff;             /* Blanco */
-  --utn-cian-claro: #e0f7fa;          /* Variante clara del cian para fondos suaves */
-  --utn-azul-medio: #42a5f5;          /* Azul medio para acciones principales */
-  --utn-azul-claro: #bbdefb;          /* Azul claro para elementos secundarios */
-  --utn-verde-suave: #a7ffeb;          /* Un verde suave si se usa para acentos */
-  --utn-verde-oscuro: #00796b;         /* Un verde oscuro si se usa para acentos */
-  --utn-amarillo-claro: #fffde7;      /* Un amarillo muy claro si se usa para acentos */
-  --utn-amarillo-oscuro: #cddc39;      /* Un amarillo verdoso si se usa para acentos */
-  --utn-naranja-claro: #ffe0b2;        /* Un naranja muy claro si se usa para acentos */
-  --utn-naranja-oscuro: #e65100;       /* Un naranja oscuro si se usa para acentos */
+  --utn-azul-oscuro: #003366; /* Azul oscuro principal */
+  --utn-cian: #00aadd; /* Cian o azul claro vibrante */
+  --utn-gris-claro: #f0f0f0; /* Gris muy claro para fondos */
+  --utn-gris-medio: #cccccc; /* Gris medio para bordes o texto secundario */
+  --utn-blanco: #ffffff; /* Blanco */
+  --utn-cian-claro: #e0f7fa; /* Variante clara del cian para fondos suaves */
+  --utn-azul-medio: #42a5f5; /* Azul medio para acciones principales */
+  --utn-azul-claro: #bbdefb; /* Azul claro para elementos secundarios */
+  --utn-verde-suave: #a7ffeb; /* Un verde suave si se usa para acentos */
+  --utn-verde-oscuro: #00796b; /* Un verde oscuro si se usa para acentos */
+  --utn-amarillo-claro: #fffde7; /* Un amarillo muy claro si se usa para acentos */
+  --utn-amarillo-oscuro: #cddc39; /* Un amarillo verdoso si se usa para acentos */
+  --utn-naranja-claro: #ffe0b2; /* Un naranja muy claro si se usa para acentos */
+  --utn-naranja-oscuro: #e65100; /* Un naranja oscuro si se usa para acentos */
 }
 
 body {
@@ -84,20 +84,14 @@ body {
   padding: 30px;
 }
 
-.estudiantes-list h2,
-.empresas-list h2 {
-  text-align: center;
-  color: var(--utn-azul-oscuro); /* Título azul oscuro */
-  margin-bottom: 20px;
-}
 
 .btn-add {
   display: inline-block;
   background-color: var(--utn-cian); /* Botón cian */
-  color: var(--utn-blanco); /* Texto blanco en el botón */
+  color: var(--utn-blanco) !important; /* Texto blanco en el botón, ¡aseguramos que sobrescriba! */
   padding: 10px 15px;
   border-radius: 4px;
-  text-decoration: none;
+  text-decoration: none !important; /* Aseguramos que no tenga subrayado */
   margin-bottom: 20px;
   transition: background-color 0.2s ease-in-out;
 }
@@ -106,33 +100,6 @@ body {
   background-color: #0088cc; /* Cian ligeramente más oscuro al pasar el mouse */
 }
 
-.estudiantes-list ul,
-.empresas-list ul {
-  list-style: none;
-  padding: 0;
-}
-
-.estudiantes-list li,
-.empresas-list li {
-  background-color: var(--utn-gris-claro); /* Fondo gris claro para los ítems */
-  border-left: 5px solid var(--utn-azul-medio); /* Barra lateral azul medio */
-  margin-bottom: 10px;
-  padding: 15px;
-  border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-}
-
-.estudiantes-list li a,
-.empresas-list li a {
-  text-decoration: none;
-  color: var(--utn-azul-oscuro); /* Texto azul oscuro en los enlaces */
-  display: block;
-}
-
-.estudiantes-list li a strong,
-.empresas-list li a strong {
-  color: var(--utn-azul-oscuro); /* Nombre en negrita azul oscuro */
-}
 
 /* Estilos para formularios (Estudiantes y Empresas) */
 .estudiante-form,
@@ -205,29 +172,51 @@ body {
 
 .estudiante-detail h2,
 .empresa-detail h2 {
-  color: var(--utn-azul-oscuro); /* Título azul oscuro */
+  color: white; /* Título azul oscuro */
   text-align: center;
   margin-bottom: 20px;
 }
 
-.detail-section {
-  background-color: var(--utn-cian-claro); /* Fondo cian claro */
+/* Replicated from .pasantia-detail .section */
+.info-section {
+  background-color: var(--utn-cian-claro);
   padding: 15px;
   border-radius: 4px;
   margin-bottom: 15px;
-  border-left: 5px solid var(--utn-cian); /* Barra lateral cian */
+  border-left: 5px solid var(--utn-cian);
 }
 
-.detail-section h3 {
-  color: var(--utn-azul-oscuro); /* Subtítulo azul oscuro */
+/* Replicated from .pasantia-detail .section h3 */
+.section-title {
+  color: var(--utn-azul-oscuro);
+  font-size: 1.3em; /* Adjusted for h4 */
   margin-top: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: 2px solid var(--utn-azul-claro); /* Added a subtle underline */
+  padding-bottom: 5px; /* Spacing for the underline */
+  font-weight: 600; /* Bolder */
 }
 
-.detail-section p strong {
-  font-weight: bold;
-  color: var(--utn-azul-oscuro); /* Texto importante azul oscuro */
+/* Replicated from .pasantia-detail .info-item */
+.estudiante-detail .info-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center; /* Aligns labels and values vertically */
 }
+
+/* Replicated from .pasantia-detail .info-label */
+.estudiante-detail .info-label {
+  font-weight: bold;
+  color: var(--utn-azul-oscuro);
+  margin-right: 10px;
+  min-width: 120px; /* Ensures labels have a minimum width for alignment */
+}
+
+/* Replicated from .pasantia-detail .info-item span */
+.estudiante-detail .info-item span {
+  color: #333;
+}
+
 
 .contact-info {
   white-space: pre-line;
@@ -244,8 +233,8 @@ body {
 
 /* Botón de retroceso */
 .btn-back {
-  background-color: var(--utn-azul-oscuro); /* Fondo naranja claro (un posible acento) */
-  color: white; /* Texto naranja oscuro */
+  background-color: var(--utn-azul-oscuro);
+  color: white;
   padding: 8px 12px;
   border: none;
   border-radius: 4px;
@@ -256,27 +245,10 @@ body {
 }
 
 .btn-back:hover {
-  background-color: var(--utn-azul-medio); /* Naranja ligeramente más oscuro al pasar el mouse */
+  background-color: var(--utn-azul-medio);
 }
 
-/* Centrado de "Registrar Estudiante" y "No hay estudiantes registrados" */
-.estudiantes-list {
-  padding: 30px;
-  text-align: center; /* Centra elementos inline/inline-block */
-}
 
-.estudiantes-list h2 {
-  text-align: center;
-  color: var(--utn-azul-oscuro);
-  margin-bottom: 20px;
-}
-
-.estudiantes-list p {
-  /* Estilo para "No hay estudiantes registrados" */
-  text-align: center;
-  margin-top: 20px;
-  color: var(--utn-gris-medio);
-}
 
 /* Estilos para la sección de competencias */
 .competencias-section {
@@ -356,15 +328,23 @@ body {
   border: none;
   color: var(--utn-azul-oscuro);
   cursor: pointer;
-  padding: 0;
-  font-size: 14px;
-  line-height: 1;
+  padding: 0 4px; /* Added horizontal padding to give it a bit more clickable area without being too wide */
+  font-size: 1em; /* Reduced font size, 1em relative to parent's 0.9em makes it appropriate */
+  line-height: 1; /* Ensures it sits nicely on the line */
   margin-left: 4px;
   transition: color 0.2s ease-in-out;
+  /* Optional: Add a subtle hover background to make it feel more like a button */
+  border-radius: 50%; /* Make it circular */
+  width: 1.5em; /* Define a fixed width */
+  height: 1.5em; /* Define a fixed height */
+  display: flex; /* Use flexbox to center the 'x' */
+  justify-content: center;
+  align-items: center;
 }
 
 .competencias-list li button:hover {
-  color: var(--utn-naranja-oscuro);
+  color: var(--utn-blanco); /* White 'x' on hover */
+  background-color: var(--utn-naranja-oscuro); /* Orange background on hover */
 }
 
 /* Estilos para mostrar competencias en la lista de estudiantes */
@@ -391,13 +371,13 @@ body {
   padding: 30px;
 }
 
-.puestos-header {
+.list-header {
   display: flex;
   flex-direction: column; /* Apila título y botón verticalmente */
   align-items: center; /* Centra los elementos horizontalmente */
   margin-bottom: 20px;
-  text-align: center; /* Asegura que el texto del título se centre */
 }
+
 
 .puestos-header h2 {
   color: var(--utn-azul-oscuro);
@@ -443,12 +423,12 @@ body {
 }
 
 .puestos-table th {
-  color: var(--utn-blanco); /* ¡Asegura que el texto del encabezado sea blanco! */
-  font-weight: bold; /* Asegura que los títulos de las columnas sean negritas */
+  color: var(--utn-blanco);
+  font-weight: bold;
 }
 
 .puestos-table td {
-  color: var(--utn-azul-oscuro); /* Color por defecto para el texto de las celdas del cuerpo */
+  color: var(--utn-azul-oscuro);
 }
 
 .puestos-table th:first-child {
@@ -500,8 +480,9 @@ body {
 }
 
 .estado-badge.ocupado {
-  background-color: var(--utn-naranja-oscuro); /* Naranja oscuro para ocupado */
+  background-color: red; /* Naranja oscuro para ocupado */
 }
+
 
 .estado-badge.cerrado {
   background-color: #dc3545; /* Rojo para cerrado */
@@ -523,7 +504,7 @@ body {
   text-decoration: underline;
 }
 
-/* Estilos para PuestoForm (mantienen los estilos previos, solo se añaden aquí para cohesión) */
+/* Estilos para PuestoForm */
 .puesto-form {
   padding: 30px;
 }
@@ -670,7 +651,7 @@ body {
   color: var(--utn-naranja-oscuro);
 }
 
-/* Estilos para PuestoDetail (mantienen los estilos previos, solo se añaden aquí para cohesión) */
+/* Estilos para PuestoDetail */
 .puesto-detail {
   padding: 30px;
 }
@@ -681,8 +662,9 @@ body {
 }
 
 .puesto-detail h2 {
-  color: var(--utn-azul-oscuro);
+  color: white;
   margin-bottom: 10px;
+  text-align: center;
 }
 
 .puesto-detail .status .estado-badge {
@@ -835,26 +817,32 @@ body {
 
 .pasantias-header {
   margin-bottom: 25px;
+  display: flex; /* Añadido para mejor control del botón */
+  justify-content: space-between; /* Alinea título a un lado, botón al otro */
+  align-items: center; /* Centra verticalmente */
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan en pantallas pequeñas */
+  gap: 15px; /* Espacio entre el título y el botón si se envuelven */
 }
 
 .pasantias-header h2 {
   color: var(--utn-azul-oscuro);
   font-size: 2.2em;
   font-weight: 600;
+  margin-bottom: 0; /* Elimina el margen inferior si ya está en flex */
 }
 
-.pasantias-list .btn.btn-primary {
+.btn.btn-primary {
   background-color: var(--utn-azul-medio);
   border-color: var(--utn-azul-medio);
-  color: var(--utn-blanco) !important; /* <-- ¡Añadimos !important aquí! */
+  color: var(--utn-blanco) !important; /* Texto blanco en el botón, ¡aseguramos que sobrescriba! */
   padding: 10px 20px;
   font-size: 1em;
   border-radius: 5px;
   transition: background-color 0.2s, border-color 0.2s;
-  text-decoration: none !important;
+  text-decoration: none !important; /* Aseguramos que no tenga subrayado */
 }
 
-.pasantias-list .btn.btn-primary:hover {
+.btn.btn-primary:hover {
   background-color: #1e88e5;
   border-color: #1e88e5;
 }
@@ -887,65 +875,65 @@ body {
   box-shadow: 0 0 0 0.2rem rgba(66, 165, 245, 0.25);
 }
 
-.pasantias-list .table {
+.table {
   background-color: var(--utn-blanco);
   border-radius: 8px;
   overflow: hidden; /* Para que los border-radius se apliquen a thead */
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-.pasantias-list .table thead.thead-light {
+.table thead.thead-light {
   background-color: var(--utn-azul-oscuro);
 }
 
-.pasantias-list .table th {
+.table th {
   color: var(--utn-blanco);
   font-weight: bold;
   padding: 12px 15px;
   border-bottom: none; /* Quitamos el borde inferior para thead */
 }
 
-.pasantias-list .table td {
+.table td {
   padding: 12px 15px;
   vertical-align: middle;
   color: var(--utn-azul-oscuro);
   border-top: 1px solid var(--utn-gris-claro); /* Borde superior para cada celda del cuerpo */
 }
 
-.pasantias-list .table tbody tr:hover {
+.table tbody tr:hover {
   background-color: var(--utn-cian-claro);
   cursor: pointer;
 }
 
 /* Badges de estado para Pasantías */
-.pasantias-list .badge {
+.badge {
   padding: 0.5em 0.8em;
   font-size: 0.8em;
   font-weight: bold;
   border-radius: 0.25rem;
 }
 
-.pasantias-list .badge-primary {
+.badge-primary {
   background-color: var(--utn-azul-medio); /* En curso */
   color: var(--utn-blanco);
 }
 
-.pasantias-list .badge-success {
+.badge-success {
   background-color: var(--utn-verde-oscuro); /* Finalizada */
   color: var(--utn-blanco);
 }
 
-.pasantias-list .badge-danger {
+.badge-danger {
   background-color: #dc3545; /* Cancelada */
   color: var(--utn-blanco);
 }
 
-.pasantias-list .badge-secondary {
+.badge-secondary {
   background-color: var(--utn-gris-medio); /* Otros estados */
   color: var(--utn-blanco);
 }
 
-.pasantias-list .text-center {
+.text-center {
   color: var(--utn-gris-medio);
   padding: 15px;
 }
@@ -981,118 +969,181 @@ body {
 }
 
 /* PasantiaForm */
-.pasantia-form {
+.pasantia-form .estudiante-form .empresa-form .puesto-form{
   padding: 30px;
-}
-.pasantia-item {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  flex-wrap: nowrap; /* Importante */
+  background-color: var(--utn-blanco); /* Fondo blanco para el formulario */
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra sutil */
 }
 
-.estado-container {
-  flex-shrink: 0; /* Evita que se encoja */
-}
-
-.pasantia-form h2 {
+.pasantia-form .estudiante-form .empresa-form .puesto-form h2 {
   text-align: center;
   color: var(--utn-azul-oscuro);
-  margin-bottom: 25px;
-  font-size: 2.2em;
-  font-weight: 600;
+  margin-bottom: 30px; /* Más espacio debajo del título */
+  font-size: 2.5em; /* Título un poco más grande */
+  font-weight: 700; /* Más negrita */
 }
 
-.pasantia-form .form-group label {
+.pasantia-form .estudiante-form .empresa-form .puesto-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Mayor espacio entre grupos de campos */
+}
+
+.pasantia-form .estudiante-form .empresa-form .puesto-form .form-group {
+  margin-bottom: 0; /* Reiniciamos el margen de bootstrap si lo tiene */
+}
+
+.pasantia-form .estudiante-form .empresa-form .puesto-form .form-group label {
+  display: block; /* Asegura que la etiqueta esté en su propia línea */
+  margin-bottom: 8px; /* Espacio entre la etiqueta y el campo */
   font-weight: bold;
   color: var(--utn-azul-oscuro);
-  margin-bottom: 5px;
+  font-size: 1.05em; /* Etiquetas un poco más grandes */
 }
 
-.pasantia-form .form-control {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .form-control {
+  width: 100%; /* Asegura que los campos ocupen todo el ancho disponible */
+  padding: 12px;
   border: 1px solid var(--utn-azul-claro);
-  border-radius: 4px;
-  padding: 10px 12px;
+  border-radius: 6px; /* Bordes ligeramente más redondeados */
+  font-size: 1em;
   color: var(--utn-azul-oscuro);
-  background-color: var(--utn-blanco);
+  background-color: var(--utn-gris-claro); /* Fondo gris claro para los campos */
+  transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
-.pasantia-form .form-control:focus {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .form-control:focus {
+  outline: none;
   border-color: var(--utn-azul-medio);
-  box-shadow: 0 0 0 0.2rem rgba(66, 165, 245, 0.25);
+  box-shadow: 0 0 0 0.2rem rgba(66, 165, 245, 0.3); /* Sombra de enfoque más visible */
+  background-color: var(--utn-blanco); /* Fondo blanco al enfocar */
 }
 
-.pasantia-form .form-row {
+.pasantia-form .estudiante-form .empresa-form .puesto-form textarea.form-control {
+  min-height: 100px; /* Altura mínima para textareas */
+  resize: vertical; /* Permitir redimensionar verticalmente */
+}
+
+/* Estilos para el select (dropdown) */
+.pasantia-form .estudiante-form .empresa-form .puesto-form select.form-control {
+  appearance: none; /* Elimina estilos por defecto del sistema operativo */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23003366" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/><path d="M0 0h24v24H0z" fill="none"/></svg>'); /* Icono de flecha */
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px;
+  padding-right: 40px; /* Espacio para el icono */
+}
+
+/* Disposición de columnas para campos en la misma fila */
+.pasantia-form .estudiante-form .empresa-form .puesto-form .form-row {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan si no hay espacio */
+  gap: 20px; /* Espacio entre las columnas */
+  margin-bottom: 0; /* Ya tenemos gap en el contenedor del formulario */
+}
+
+.pasantia-form .estudiante-form .empresa-form .puesto-form .form-row > .form-group {
+  flex: 1; /* Distribuye el espacio equitativamente */
+  min-width: calc(50% - 10px); /* Para dos columnas, ajusta el ancho */
+}
+
+/* Ajustes para pantallas pequeñas */
+@media (max-width: 576px) {
+  .pasantia-form .estudiante-form .empresa-form .puesto-form .form-row {
+    flex-direction: column; /* Apila las columnas en pantallas pequeñas */
+    gap: 0; /* Elimina el gap cuando se apilan */
+  }
+  .pasantia-form .estudiante-form .empresa-form .puesto-form .form-row > .form-group {
+    min-width: 100%;
+    margin-bottom: 20px; /* Añade margen cuando se apilan */
+  }
+  .pasantia-form .estudiante-form .empresa-form .puesto-form .form-row > .form-group:last-child {
+    margin-bottom: 0; /* No hay margen inferior para el último elemento */
+  }
+}
+
+/* Sección de Competencias dentro del formulario (aseguramos su estilo) */
+.pasantia-form .estudiante-form .empresa-form .puesto-form .competencias-section {
+  margin-top: 20px; /* Espacio superior */
+  margin-bottom: 20px; /* Espacio inferior */
+  background-color: var(--utn-cian-claro);
+  padding: 20px; /* Más padding */
+  border-radius: 8px; /* Más redondeado */
+  border-left: 5px solid var(--utn-azul-medio);
+}
+
+.pasantia-form .estudiante-form .empresa-form .puesto-form .competencias-section label {
+  font-size: 1.1em;
+  color: var(--utn-azul-oscuro);
   margin-bottom: 15px;
 }
 
-.pasantia-form .form-row .form-group {
-  flex: 1;
+.pasantia-form .estudiante-form .empresa-form .puesto-form .competencias-input input {
+  background-color: var(--utn-blanco); /* Fondo blanco para input de competencias */
 }
 
-.pasantia-form .input-group-prepend .input-group-text {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .competencias-list li {
   background-color: var(--utn-azul-claro);
-  border: 1px solid var(--utn-azul-claro);
   color: var(--utn-azul-oscuro);
-  border-right: none;
 }
 
-.pasantia-form .input-group .form-control {
-  border-left: none;
-}
-
-.pasantia-form .form-actions {
+/* Acciones del formulario (botones) */
+.pasantia-form .estudiante-form .empresa-form .puesto-form .form-actions {
   display: flex;
   justify-content: flex-end; /* Alinea los botones a la derecha */
-  gap: 10px; /* Espacio entre los botones */
-  margin-top: 30px;
+  gap: 15px; /* Espacio entre los botones */
+  margin-top: 30px; /* Más espacio encima de los botones */
+  padding-top: 20px;
+  border-top: 1px solid var(--utn-gris-claro); /* Línea divisoria suave */
 }
 
-.pasantia-form .btn {
-  padding: 10px 20px;
-  font-size: 1em;
+.pasantia-form .estudiante-form .empresa-form .puesto-form .btn {
+  padding: 12px 25px; /* Botones más grandes */
+  font-size: 1.1em; /* Texto más grande en los botones */
   border-radius: 5px;
-  transition: background-color 0.2s, border-color 0.2s, color 0.2s;
+  font-weight: 600; /* Texto en negrita */
 }
 
-.pasantia-form .btn-primary {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .btn-primary {
   background-color: var(--utn-azul-medio);
   border-color: var(--utn-azul-medio);
   color: var(--utn-blanco);
 }
 
-.pasantia-form .btn-primary:hover {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .btn-primary:hover {
   background-color: #1e88e5;
   border-color: #1e88e5;
 }
 
-.pasantia-form .btn-secondary {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .btn-secondary {
   background-color: var(--utn-gris-medio);
   border-color: var(--utn-gris-medio);
   color: var(--utn-azul-oscuro);
 }
 
-.pasantia-form .btn-secondary:hover {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .btn-secondary:hover {
   background-color: #b0b0b0;
   border-color: #b0b0b0;
 }
 
-.pasantia-form .no-options {
+/* Mensaje de no-options */
+.pasantia-form .estudiante-form .empresa-form .puesto-form .no-options {
   background-color: var(--utn-amarillo-claro);
   border: 1px solid var(--utn-amarillo-oscuro);
-  color: #665b04; /* Un color de texto que contraste con el amarillo claro */
+  color: #665b04;
   padding: 15px;
   border-radius: 5px;
-  margin-top: 10px;
+  margin-top: 15px;
   font-size: 0.95em;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.pasantia-form .no-options .btn-link {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .no-options .btn-link {
   color: var(--utn-azul-medio);
   text-decoration: underline;
   font-weight: bold;
@@ -1102,7 +1153,7 @@ body {
   cursor: pointer;
 }
 
-.pasantia-form .no-options .btn-link:hover {
+.pasantia-form .estudiante-form .empresa-form .puesto-form .no-options .btn-link:hover {
   color: var(--utn-azul-oscuro);
 }
 
@@ -1110,34 +1161,37 @@ body {
 .pasantia-detail {
   padding: 30px;
 }
-
-.pasantia-detail .card {
+.pasantia-form {
+  padding: 30px;
+}
+.card {
   background-color: var(--utn-blanco);
   border: 1px solid var(--utn-gris-claro);
   border-radius: 8px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-.pasantia-detail .card-header {
+.card-header {
   background-color: var(--utn-azul-oscuro);
   color: var(--utn-blanco);
   padding: 15px 20px;
   border-bottom: 1px solid var(--utn-azul-oscuro);
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  text-align: center;
 }
 
-.pasantia-detail .card-header h2 {
+.card-header h2 {
   margin-bottom: 0;
   font-size: 1.8em;
   font-weight: 600;
 }
 
-.pasantia-detail .card-body {
+.card-body {
   padding: 25px;
 }
 
-.pasantia-detail .section-title {
+.section-title {
   color: var(--utn-azul-oscuro);
   font-size: 1.3em;
   margin-bottom: 15px;
@@ -1146,24 +1200,24 @@ body {
   font-weight: 600;
 }
 
-.pasantia-detail .info-item {
+.info-item {
   margin-bottom: 10px;
   display: flex;
   align-items: center; /* Alinea etiquetas y valores */
 }
 
-.pasantia-detail .info-label {
+.info-label {
   font-weight: bold;
   color: var(--utn-azul-oscuro);
   margin-right: 10px;
   min-width: 120px; /* Asegura que las etiquetas tengan un ancho mínimo para alineación */
 }
 
-.pasantia-detail .info-item span {
+.info-item span {
   color: #333;
 }
 
-.pasantia-detail .related-info-card {
+.related-info-card {
   background-color: var(--utn-cian-claro);
   padding: 20px;
   border-radius: 8px;
@@ -1171,26 +1225,26 @@ body {
   margin-bottom: 20px;
 }
 
-.pasantia-detail .related-info-card .card-title {
+.related-info-card .card-title {
   color: var(--utn-azul-oscuro);
   font-size: 1.5em;
   margin-bottom: 15px;
   font-weight: 600;
 }
 
-.pasantia-detail .alert-warning {
+.alert-warning {
   margin-top: 15px;
   font-size: 0.9em;
 }
 
-.pasantia-detail .form-group label {
+.form-group label {
   font-weight: bold;
   color: var(--utn-azul-oscuro);
   margin-bottom: 5px;
   display: block;
 }
 
-.pasantia-detail .form-control {
+.form-control {
   border: 1px solid var(--utn-azul-claro);
   border-radius: 4px;
   padding: 8px 12px;
@@ -1198,60 +1252,101 @@ body {
   background-color: var(--utn-blanco);
 }
 
-.pasantia-detail .form-control:focus {
+.form-control:focus {
+  outline: none;
   border-color: var(--utn-azul-medio);
   box-shadow: 0 0 0 0.2rem rgba(66, 165, 245, 0.25);
 }
 
-.pasantia-detail .form-actions {
+.form-actions {
   margin-top: 25px;
   display: flex;
   justify-content: flex-end;
   gap: 10px;
 }
 
-.pasantia-detail .btn {
+.btn {
   padding: 10px 20px;
   font-size: 1em;
   border-radius: 5px;
   transition: background-color 0.2s, border-color 0.2s, color 0.2s;
 }
 
-.pasantia-detail .btn-primary {
+.btn-primary {
   background-color: var(--utn-azul-medio);
   border-color: var(--utn-azul-medio);
   color: var(--utn-blanco);
 }
 
-.pasantia-detail .btn-primary:hover {
+.btn-primary:hover {
   background-color: #1e88e5;
   border-color: #1e88e5;
 }
 
-.pasantia-detail .btn-secondary {
+.btn-secondary {
   background-color: var(--utn-gris-medio);
   border-color: var(--utn-gris-medio);
   color: var(--utn-azul-oscuro);
 }
 
-.pasantia-detail .btn-secondary:hover {
+.btn-secondary:hover {
   background-color: #b0b0b0;
   border-color: #b0b0b0;
 }
 
-.pasantia-detail .btn-danger {
+.btn-danger {
   background-color: #dc3545;
   border-color: #dc3545;
   color: var(--utn-blanco);
 }
-
-.pasantia-detail .btn-danger:hover {
+.btn-danger:hover {
   background-color: #c82333;
   border-color: #c82333;
 }
+/* Base button styles */
+.btn {
+  display: inline-block; /* Allows padding and width to be applied correctly */
+  padding: 10px 20px; /* Adjust as needed for desired button size */
+  font-size: 1em; /* Adjust as needed */
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none; /* Removes underline for <a> tags used as buttons */
+  border-radius: 4px; /* Makes them slightly rounded */
+  cursor: pointer;
+  border: 1px solid transparent; /* A transparent border to prevent shifting on hover if border color changes */
+  transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
 
-.pasantias-list .text-muted.text-center {
-  color: var(--utn-gris-medio) !important;
-  font-size: 0.9em;
-  margin-top: 15px;
+/* Primary button styles (for Editar) */
+.btn-primary {
+  background-color: var(--utn-azul-medio); /* Blue background */
+  color: var(--utn-blanco); /* White text */
+  border-color: var(--utn-azul-medio); /* Border matches background */
+}
+
+.btn-primary:hover {
+  background-color: #2980b9; /* Slightly darker blue on hover */
+  border-color: #2980b9;
+}
+
+/* Danger button styles (for Eliminar) */
+.btn-danger {
+  background-color: #dc3545; /* Red background */
+  color: var(--utn-blanco); /* White text */
+  border-color: #dc3545; /* Border matches background */
+}
+
+.btn-danger:hover {
+  background-color: #c82333; /* Slightly darker red on hover */
+  border-color: #c82333;
+}
+
+/* Margin utility class (if you're using it) */
+.mr-2 {
+  margin-right: 10px; /* Adjust as per your spacing convention */
+}
+
+/* Styles for the EstudianteDetail container */
+.estudiante-detail .actions {
+  margin-top: 20px; /* Add some space above the buttons */
 }

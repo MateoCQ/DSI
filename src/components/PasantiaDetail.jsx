@@ -16,17 +16,16 @@ const PasantiaDetail = () => {
     salario: 0,
     horasSemanales: 0
   });
+  const [errors, setErrors] = useState({});
 
   useEffect(() => {
     const cargarDatos = () => {
       try {
-        // Cargar todos los datos necesarios
         const pasantias = JSON.parse(localStorage.getItem('pasantias')) || [];
         const puestos = JSON.parse(localStorage.getItem('puestos')) || [];
         const estudiantes = JSON.parse(localStorage.getItem('estudiantes')) || [];
         const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
 
-        // Buscar la pasantía actual
         const encontrada = pasantias.find(p => p.id === id);
         if (!encontrada) {
           setError('Pasantía no encontrada');
@@ -41,14 +40,12 @@ const PasantiaDetail = () => {
           horasSemanales: encontrada.horasSemanales
         });
 
-        // Buscar información relacionada
         const puestoRelacionado = puestos.find(p => p.id === encontrada.puestoId);
         setPuesto(puestoRelacionado);
 
         const estudianteRelacionado = estudiantes.find(e => e.id === encontrada.estudianteId);
         setEstudiante(estudianteRelacionado);
 
-        // Buscar empresa relacionada con el puesto
         if (puestoRelacionado) {
           const empresaRelacionada = empresas.find(e => e.id === puestoRelacionado.empresaId);
           setEmpresa(empresaRelacionada);
@@ -67,9 +64,27 @@ const PasantiaDetail = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user types
+    if (errors[name]) {
+      setErrors(prev => ({ ...prev, [name]: '' }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+    if (!formData.estado) newErrors.estado = 'El estado es requerido';
+    if (formData.salario < 0) newErrors.salario = 'El salario no puede ser negativo';
+    if (formData.horasSemanales <= 0) newErrors.horasSemanales = 'Las horas semanales deben ser mayores a 0';
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
   };
 
   const handleSave = () => {
+    if (!validateForm()) {
+      return;
+    }
+
     const pasantias = JSON.parse(localStorage.getItem('pasantias')) || [];
     const pasantiaActualizada = {
       ...pasantia,
@@ -137,12 +152,14 @@ const PasantiaDetail = () => {
                       name="estado"
                       value={formData.estado}
                       onChange={handleChange}
-                      className="form-control"
+                      className={`form-control ${errors.estado ? 'is-invalid' : ''}`}
                     >
+                      <option value="">Seleccione un estado</option>
                       <option value="En curso">En curso</option>
                       <option value="Finalizada">Finalizada</option>
                       <option value="Cancelada">Cancelada</option>
                     </select>
+                    {errors.estado && <div className="invalid-feedback">{errors.estado}</div>}
                   </div>
                   <div className="info-item">
                     <span className="info-label">Fecha Inicio:</span>
@@ -163,8 +180,10 @@ const PasantiaDetail = () => {
                       name="salario"
                       value={formData.salario}
                       onChange={handleChange}
-                      className="form-control"
+                      className={`form-control ${errors.salario ? 'is-invalid' : ''}`}
+                      min="0"
                     />
+                    {errors.salario && <div className="invalid-feedback">{errors.salario}</div>}
                   </div>
                   <div className="form-group">
                     <label>Horas Semanales:</label>
@@ -173,8 +192,10 @@ const PasantiaDetail = () => {
                       name="horasSemanales"
                       value={formData.horasSemanales}
                       onChange={handleChange}
-                      className="form-control"
+                      className={`form-control ${errors.horasSemanales ? 'is-invalid' : ''}`}
+                      min="1"
                     />
+                    {errors.horasSemanales && <div className="invalid-feedback">{errors.horasSemanales}</div>}
                   </div>
                 </div>
               </div>
@@ -184,6 +205,7 @@ const PasantiaDetail = () => {
                   type="button" 
                   className="btn btn-primary mr-2"
                   onClick={handleSave}
+                  disabled={!formData.estado || formData.salario < 0 || formData.horasSemanales <= 0}
                 >
                   Guardar
                 </button>
@@ -283,23 +305,20 @@ const PasantiaDetail = () => {
                   </div>
                 </div>
               </div>
-              <div>
-                {!editMode && (
-            <div>
-              <button 
-                className="btn btn-primary mr-2"
-                onClick={() => setEditMode(true)}
-              >
-                Editar
-              </button>
-              <button 
-                className="btn btn-danger"
-                onClick={handleDelete}
-              >
-                Eliminar
-              </button>
-            </div>
-          )}
+              
+              <div className="mt-4">
+                <button 
+                  className="btn btn-primary mr-2"
+                  onClick={() => setEditMode(true)}
+                >
+                  Editar
+                </button>
+                <button 
+                  className="btn btn-danger"
+                  onClick={handleDelete}
+                >
+                  Eliminar
+                </button>
               </div>
             </>
           )}

@@ -17,12 +17,12 @@ const PuestosList = () => {
   useEffect(() => {
     const puestosGuardados = JSON.parse(localStorage.getItem('puestos')) || [];
     const empresasGuardadas = JSON.parse(localStorage.getItem('empresas')) || [];
-    
+
     const empresasMap = empresasGuardadas.reduce((acc, empresa) => {
       acc[empresa.id] = empresa;
       return acc;
     }, {});
-    
+
     setPuestos(puestosGuardados);
     setFilteredPuestos(puestosGuardados);
     setEmpresas(empresasMap);
@@ -30,28 +30,28 @@ const PuestosList = () => {
 
   useEffect(() => {
     let result = puestos;
-    
+
     if (filters.estado) {
-      result = result.filter(p => 
+      result = result.filter(p =>
         p.estado === filters.estado
       );
     }
-    
+
     if (filters.competencia) {
-      result = result.filter(p => 
-        p.competencias && p.competencias.some(c => 
+      result = result.filter(p =>
+        p.competencias && p.competencias.some(c =>
           c.toLowerCase().includes(filters.competencia.toLowerCase())
         )
       );
     }
-    
+
     if (filters.empresa) {
       result = result.filter(p => {
         const empresa = empresas[p.empresaId];
         return empresa && empresa.nombre.toLowerCase().includes(filters.empresa.toLowerCase());
       });
     }
-    
+
     setFilteredPuestos(result);
     setCurrentPage(1);
   }, [filters, puestos, empresas]);
@@ -61,7 +61,7 @@ const PuestosList = () => {
     setFilters(prev => ({ ...prev, [name]: value }));
   };
 
-  // Lógica de paginación
+  // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPuestos.slice(indexOfFirstItem, indexOfLastItem);
@@ -71,16 +71,16 @@ const PuestosList = () => {
 
   const getNombreEmpresa = (empresaId) => {
     const empresa = empresas[empresaId];
-    return empresa ? empresa.nombre : `Empresa no encontrada (ID: ${empresaId})`;
+    return empresa ? empresa.nombre : 'Empresa no encontrada';
   };
 
   const getEstadoBadge = (estado) => {
     const clases = {
-      disponible: 'disponible',
-      ocupado: 'ocupado',
-      cerrado: 'cerrado'
+      disponible: 'badge-success',
+      ocupado: 'badge-danger',
+      cerrado: 'badge-danger'
     };
-    return <span className={`estado-badge ${clases[estado] || ''}`}>{estado || 'disponible'}</span>;
+    return <span className={`badge ${clases[estado] || 'badge-secondary'}`}>{estado || 'N/A'}</span>;
   };
 
   const handleRowClick = (puestoId) => {
@@ -88,59 +88,72 @@ const PuestosList = () => {
   };
 
   return (
-    <div className="puestos-list-container">
-      <div className="puestos-header">
+    <div className="puestos-list-container ">
+      <div className="list-header d-flex justify-content-between mb-4">
         <h2>Listado de Puestos</h2>
-        <Link to="/puestos/nuevo" className="add-puesto-btn">
+        <Link to="/puestos/nuevo" className="btn btn-primary">
           Registrar Nuevo Puesto
         </Link>
       </div>
-      
-      {/* Filtros */}
-      <div className="filters-container">
-        <div className="filter-group">
-          <label htmlFor="estado">Estado:</label>
-          <select
-            id="estado"
-            name="estado"
-            value={filters.estado}
-            onChange={handleFilterChange}
-          >
-            <option value="">Todos</option>
-            <option value="disponible">Disponible</option>
-            <option value="ocupado">Ocupado</option>
-            <option value="cerrado">Cerrado</option>
-          </select>
-        </div>
-        
-        <div className="filter-group">
-          <label htmlFor="competencia">Competencia:</label>
-          <input
-            type="text"
-            id="competencia"
-            name="competencia"
-            value={filters.competencia}
-            onChange={handleFilterChange}
-          />
-        </div>
-        
-        <div className="filter-group">
-          <label htmlFor="empresa">Empresa:</label>
-          <input
-            type="text"
-            id="empresa"
-            name="empresa"
-            value={filters.empresa}
-            onChange={handleFilterChange}
-          />
+
+      {/* Filters */}
+      <div className="filters-container mb-4">
+        <div className="row">
+          <div className="col-md-4">
+            <div className="form-group">
+              <label htmlFor="estado">Estado:</label>
+              <select
+                id="estado"
+                name="estado"
+                value={filters.estado}
+                onChange={handleFilterChange}
+                className="form-control"
+              >
+                <option value="">Todos</option>
+                <option value="disponible">Disponible</option>
+                <option value="ocupado">Ocupado</option>
+                <option value="cerrado">Cerrado</option>
+              </select>
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="form-group">
+              <label htmlFor="competencia">Competencia:</label>
+              <input
+                type="text"
+                id="competencia"
+                name="competencia"
+                value={filters.competencia}
+                onChange={handleFilterChange}
+                className="form-control"
+                placeholder="Buscar por competencia"
+              />
+            </div>
+          </div>
+
+          <div className="col-md-4">
+            <div className="form-group">
+              <label htmlFor="empresa">Empresa:</label>
+              <input
+                type="text"
+                id="empresa"
+                name="empresa"
+                value={filters.empresa}
+                onChange={handleFilterChange}
+                className="form-control"
+                placeholder="Buscar por empresa"
+              />
+            </div>
+          </div>
         </div>
       </div>
-      
-      <div className="puestos-table-container">
-        <table className="puestos-table">
-          <thead>
+
+      <div className="table-responsive">
+        <table className="table table-hover">
+          <thead className="thead-light">
             <tr>
-              <th>Nombre</th>
+              <th>Nombre del Puesto</th>
               <th>Empresa</th>
               <th>Estado</th>
               <th>Competencias</th>
@@ -149,62 +162,72 @@ const PuestosList = () => {
           <tbody>
             {currentItems.length > 0 ? (
               currentItems.map(puesto => (
-                <tr 
-                  key={puesto.id} 
+                <tr
+                  key={puesto.id}
                   onClick={() => handleRowClick(puesto.id)}
-                  className="puesto-row"
+                  style={{ cursor: 'pointer' }}
                 >
+                  <td>{puesto.nombre}</td>
+                  <td>{getNombreEmpresa(puesto.empresaId)}</td>
+                  <td>{getEstadoBadge(puesto.estado)}</td>
                   <td>
-                    <div className="puesto-nombre">{puesto.nombre}</div>
-                  </td>
-                  <td className="empresa-cell">{getNombreEmpresa(puesto.empresaId)}</td>
-                  <td className="estado-cell">{getEstadoBadge(puesto.estado)}</td>
-                  <td className="competencias-cell">
                     {puesto.competencias && puesto.competencias.slice(0, 2).join(', ')}
                     {puesto.competencias && puesto.competencias.length > 2 ? '...' : ''}
                   </td>
                 </tr>
               ))
             ) : (
-              <tr className="empty-row">
-                <td colSpan="4">
-                  <div className="empty-message">
-                    No hay puestos que coincidan con los filtros
-                  </div>
-                </td>
+              <tr>
+                <td colSpan="4" className="text-center">No hay puestos que coincidan con los filtros.</td>
               </tr>
             )}
           </tbody>
         </table>
+      </div>
 
-        {/* Paginación */}
-        {filteredPuestos.length > itemsPerPage && (
-          <div className="pagination-controls">
-            <button 
-              onClick={() => paginate(currentPage - 1)} 
-              disabled={currentPage === 1}
-              className="pagination-btn"
-            >
-              Anterior
-            </button>
-            
-            <span className="page-indicator">
-              Página {currentPage} de {totalPages}
-            </span>
-            
-            <button 
-              onClick={() => paginate(currentPage + 1)} 
-              disabled={currentPage === totalPages}
-              className="pagination-btn"
-            >
-              Siguiente
-            </button>
-          </div>
-        )}
+      {/* Pagination */}
+      {filteredPuestos.length > itemsPerPage && (
+        <nav aria-label="Paginación de puestos">
+          <ul className="pagination justify-content-center">
+            <li className={`page-item ${currentPage === 1 ? 'disabled' : ''}`}>
+              <button
+                className="page-link"
+                onClick={() => paginate(currentPage - 1)}
+                disabled={currentPage === 1}
+              >
+                &laquo; Anterior
+              </button>
+            </li>
 
-        <div className="items-count">
-          Mostrando {currentItems.length} de {filteredPuestos.length} puestos
-        </div>
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map(number => (
+              <li
+                key={number}
+                className={`page-item ${currentPage === number ? 'active' : ''}`}
+              >
+                <button
+                  className="page-link"
+                  onClick={() => paginate(number)}
+                >
+                  {number}
+                </button>
+              </li>
+            ))}
+
+            <li className={`page-item ${currentPage === totalPages ? 'disabled' : ''}`}>
+              <button
+                className="page-link"
+                onClick={() => paginate(currentPage + 1)}
+                disabled={currentPage === totalPages}
+              >
+                Siguiente &raquo;
+              </button>
+            </li>
+          </ul>
+        </nav>
+      )}
+
+      <div className="text-muted text-center mt-2">
+        Mostrando {currentItems.length} de {filteredPuestos.length} puestos
       </div>
     </div>
   );

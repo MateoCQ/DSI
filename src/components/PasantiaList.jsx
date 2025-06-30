@@ -82,7 +82,7 @@ const PasantiasList = () => {
 
   return (
     <div className="pasantias-list container">
-      <div className="pasantias-header d-flex justify-content-between align-items-center mb-4">
+      <div className="list-header d-flex justify-content-between align-items-center mb-4">
         <h2>Listado de Pasantías</h2>
         <Link to="/pasantias/nueva" className="btn btn-primary">
           Registrar Nueva Pasantía

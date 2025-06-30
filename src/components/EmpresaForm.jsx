@@ -26,8 +26,8 @@ const EmpresaForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const empresas = JSON.parse(localStorage.getItem('empresas')) || [];
-    const nuevasEmpresas = [...empresas, { 
-      ...formData, 
+    const nuevasEmpresas = [...empresas, {
+      ...formData,
       id: generateId(ID_PREFIXES.EMPRESA)
     }];
     localStorage.setItem('empresas', JSON.stringify(nuevasEmpresas));
@@ -35,84 +35,99 @@ const EmpresaForm = () => {
   };
 
   return (
-    <div className="empresa-form">
+    <div className="empresa-form"> {/* Added parent div with class */}
       <h2>Registrar Nueva Empresa</h2>
       <form onSubmit={handleSubmit}>
-  <div className="form-group">
-    <label htmlFor="nombre">Nombre</label>
-    <input 
-      id="nombre"
-      type="text" 
-      name="nombre" 
-      value={formData.nombre} 
-      onChange={handleChange} 
-      required 
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="nombre">Nombre</label>
+          <input
+            id="nombre"
+            type="text"
+            name="nombre"
+            value={formData.nombre}
+            onChange={handleChange}
+            required
+            className="form-control" // Added class
+          />
+        </div>
 
-  <div className="form-group">
-    <label htmlFor="direccion">Dirección</label>
-    <input 
-      id="direccion"
-      type="text" 
-      name="direccion" 
-      value={formData.direccion} 
-      onChange={handleChange} 
-      required 
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="direccion">Dirección</label>
+          <input
+            id="direccion"
+            type="text"
+            name="direccion"
+            value={formData.direccion}
+            onChange={handleChange}
+            required
+            className="form-control" // Added class
+          />
+        </div>
 
-  <div className="form-group">
-    <label htmlFor="telefono">Teléfono</label>
-    <input 
-      id="telefono"
-      type="tel" 
-      name="telefono" 
-      value={formData.telefono} 
-      onChange={handleChange} 
-      pattern="[0-9]*"
-      required 
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="telefono">Teléfono</label>
+          <input
+            id="telefono"
+            type="tel"
+            name="telefono"
+            value={formData.telefono}
+            onChange={handleChange}
+            pattern="[0-9]*"
+            required
+            className="form-control" // Added class
+          />
+        </div>
 
-  <div className="form-group">
-    <label htmlFor="email">Email</label>
-    <input 
-      id="email"
-      type="email" 
-      name="email" 
-      value={formData.email} 
-      onChange={handleChange} 
-      required 
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="email">Email</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+            className="form-control" // Added class
+          />
+        </div>
 
-  <div className="form-group">
-    <label htmlFor="sector">Sector</label>
-    <input 
-      id="sector"
-      type="text" 
-      name="sector" 
-      value={formData.sector} 
-      onChange={handleChange} 
-      required 
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="sector">Sector</label>
+          <input
+            id="sector"
+            type="text"
+            name="sector"
+            value={formData.sector}
+            onChange={handleChange}
+            required
+            className="form-control" // Added class
+          />
+        </div>
 
-  <div className="form-group">
-    <label htmlFor="contacto">Información de Contacto adicional</label>
-    <textarea 
-      id="contacto"
-      name="contacto" 
-      value={formData.contacto} 
-      onChange={handleChange} 
-      className="form-textarea"
-    />
-  </div>
+        <div className="form-group">
+          <label htmlFor="contacto">Información de Contacto adicional</label>
+          <textarea
+            id="contacto"
+            name="contacto"
+            value={formData.contacto}
+            onChange={handleChange}
+            className="form-control" // Changed from form-textarea to form-control
+          />
+        </div>
 
-  <button type="submit">Guardar Empresa</button>
-</form>
-
+        <div className="form-actions"> {/* Added form-actions div */}
+          <button type="submit" className="btn btn-primary">
+            Guardar Empresa
+          </button>
+          <button
+            type="button"
+            className="btn btn-secondary" // Added secondary button
+            onClick={() => navigate('/empresas')}
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
