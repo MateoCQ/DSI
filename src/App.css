@@ -1,26 +1,26 @@
-/* Paleta de colores UTN San Francisco (aproximada) */
+
 :root {
-  --utn-azul-oscuro: #003366; /* Azul oscuro principal */
-  --utn-cian: #00aadd; /* Cian o azul claro vibrante */
-  --utn-gris-claro: #f0f0f0; /* Gris muy claro para fondos */
-  --utn-gris-medio: #cccccc; /* Gris medio para bordes o texto secundario */
-  --utn-blanco: #ffffff; /* Blanco */
-  --utn-cian-claro: #e0f7fa; /* Variante clara del cian para fondos suaves */
-  --utn-azul-medio: #42a5f5; /* Azul medio para acciones principales */
-  --utn-azul-claro: #bbdefb; /* Azul claro para elementos secundarios */
-  --utn-verde-suave: #a7ffeb; /* Un verde suave si se usa para acentos */
-  --utn-verde-oscuro: #00796b; /* Un verde oscuro si se usa para acentos */
-  --utn-amarillo-claro: #fffde7; /* Un amarillo muy claro si se usa para acentos */
-  --utn-amarillo-oscuro: #cddc39; /* Un amarillo verdoso si se usa para acentos */
-  --utn-naranja-claro: #ffe0b2; /* Un naranja muy claro si se usa para acentos */
-  --utn-naranja-oscuro: #e65100; /* Un naranja oscuro si se usa para acentos */
+  --utn-azul-oscuro: #003366; 
+  --utn-cian: #00aadd; 
+  --utn-gris-claro: #f0f0f0; 
+  --utn-gris-medio: #cccccc;
+  --utn-blanco: #ffffff; 
+  --utn-cian-claro: #e0f7fa; 
+  --utn-azul-medio: #42a5f5; 
+  --utn-azul-claro: #bbdefb; 
+  --utn-verde-suave: #a7ffeb; 
+  --utn-verde-oscuro: #00796b; 
+  --utn-amarillo-claro: #fffde7; 
+  --utn-amarillo-oscuro: #cddc39; 
+  --utn-naranja-claro: #ffe0b2; 
+  --utn-naranja-oscuro: #e65100; 
 }
 
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0;
-  background-color: var(--utn-gris-claro); /* Fondo gris claro */
-  color: var(--utn-azul-oscuro); /* Texto principal azul oscuro */
+  background-color: var(--utn-gris-claro);
+  color: var(--utn-azul-oscuro); 
   display: flex;
   justify-content: center;
   align-items: center;
@@ -28,16 +28,15 @@ body {
 }
 
 .app {
-  background-color: var(--utn-blanco); /* Fondo blanco para el contenedor principal */
+  background-color: var(--utn-blanco);
   border-radius: 8px;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15); /* Sombra sutil */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   overflow: hidden;
   width: 90%;
-  max-width: 600px; /* Ancho máximo para el contenedor principal */
+  max-width: 600px; 
   margin: 20px;
 }
 
-/* Estilos para la navegación en la página de inicio */
 .home-container {
   padding: 40px;
   text-align: center;
@@ -51,14 +50,14 @@ body {
 }
 
 .nav-card {
-  background-color: var(--utn-azul-oscuro); /* Fondo cian claro */
-  color: white; /* Texto azul oscuro */
+  background-color: var(--utn-azul-oscuro); 
+  color: white; 
   padding: 20px;
   border-radius: 6px;
   text-decoration: none;
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
-  border-left: 5px solid var(--utn-gris-medio); /* Barra lateral cian */
+  border-left: 5px solid var(--utn-gris-medio); 
 }
 
 .nav-card:hover {
@@ -75,10 +74,10 @@ body {
 .nav-card p {
   margin-bottom: 0;
   font-size: 0.9em;
-  color: var(--utn-cian); /* Texto secundario cian */
+  color: var(--utn-cian); 
 }
 
-/* Estilos para listas (Empresas y Estudiantes) */
+
 .estudiantes-list,
 .empresas-list {
   padding: 30px;
@@ -87,21 +86,19 @@ body {
 
 .btn-add {
   display: inline-block;
-  background-color: var(--utn-cian); /* Botón cian */
-  color: var(--utn-blanco) !important; /* Texto blanco en el botón, ¡aseguramos que sobrescriba! */
+  background-color: var(--utn-cian); 
+  color: var(--utn-blanco) !important; 
   padding: 10px 15px;
   border-radius: 4px;
-  text-decoration: none !important; /* Aseguramos que no tenga subrayado */
-  margin-bottom: 20px;
+  text-decoration: none !important; 
   transition: background-color 0.2s ease-in-out;
 }
 
 .btn-add:hover {
-  background-color: #0088cc; /* Cian ligeramente más oscuro al pasar el mouse */
+  background-color: #0088cc;
 }
 
 
-/* Estilos para formularios (Estudiantes y Empresas) */
 .estudiante-form,
 .empresa-form {
   padding: 30px;
@@ -110,7 +107,7 @@ body {
 .estudiante-form h2,
 .empresa-form h2 {
   text-align: center;
-  color: var(--utn-azul-oscuro); /* Título azul oscuro */
+  color: var(--utn-azul-oscuro); 
   margin-bottom: 20px;
 }
 
@@ -130,11 +127,11 @@ body {
 .empresa-form input[type="tel"],
 .empresa-form textarea {
   padding: 12px;
-  border: 1px solid var(--utn-azul-claro); /* Borde azul claro */
+  border: 1px solid var(--utn-azul-claro);
   border-radius: 4px;
   font-size: 1em;
-  color: var(--utn-azul-oscuro); /* Texto azul oscuro */
-  background-color: var(--utn-blanco); /* Fondo blanco */
+  color: var(--utn-azul-oscuro);
+  background-color: var(--utn-blanco);
   resize: none;
 }
 
@@ -143,14 +140,14 @@ body {
 .empresa-form input:focus,
 .empresa-form textarea:focus {
   outline: none;
-  border-color: var(--utn-azul-medio); /* Borde azul medio al enfocar */
-  box-shadow: 0 0 5px rgba(0, 170, 221, 0.5); /* Sombra cian al enfocar */
+  border-color: var(--utn-azul-medio); 
+  box-shadow: 0 0 5px rgba(0, 170, 221, 0.5); 
 }
 
 .estudiante-form button[type="submit"],
 .empresa-form button[type="submit"] {
-  background-color: var(--utn-azul-medio); /* Botón azul medio */
-  color: var(--utn-blanco); /* Texto blanco en el botón */
+  background-color: var(--utn-azul-medio); 
+  color: var(--utn-blanco); 
   padding: 12px 20px;
   border: none;
   border-radius: 4px;
@@ -161,10 +158,9 @@ body {
 
 .estudiante-form button[type="submit"]:hover,
 .empresa-form button[type="submit"]:hover {
-  background-color: #1e88e5; /* Azul ligeramente más oscuro al pasar el mouse */
+  background-color: #1e88e5;
 }
 
-/* Estilos para detalles (Estudiantes y Empresas) */
 .estudiante-detail,
 .empresa-detail {
   padding: 30px;
@@ -172,12 +168,11 @@ body {
 
 .estudiante-detail h2,
 .empresa-detail h2 {
-  color: white; /* Título azul oscuro */
+  color: white; 
   text-align: center;
   margin-bottom: 20px;
 }
 
-/* Replicated from .pasantia-detail .section */
 .info-section {
   background-color: var(--utn-cian-claro);
   padding: 15px;
@@ -186,33 +181,29 @@ body {
   border-left: 5px solid var(--utn-cian);
 }
 
-/* Replicated from .pasantia-detail .section h3 */
 .section-title {
   color: var(--utn-azul-oscuro);
-  font-size: 1.3em; /* Adjusted for h4 */
+  font-size: 1.3em; 
   margin-top: 0;
   margin-bottom: 15px;
-  border-bottom: 2px solid var(--utn-azul-claro); /* Added a subtle underline */
-  padding-bottom: 5px; /* Spacing for the underline */
-  font-weight: 600; /* Bolder */
+  border-bottom: 2px solid var(--utn-azul-claro); 
+  padding-bottom: 5px;
+  font-weight: 600; 
 }
 
-/* Replicated from .pasantia-detail .info-item */
 .estudiante-detail .info-item {
   margin-bottom: 10px;
   display: flex;
-  align-items: center; /* Aligns labels and values vertically */
+  align-items: center; 
 }
 
-/* Replicated from .pasantia-detail .info-label */
 .estudiante-detail .info-label {
   font-weight: bold;
   color: var(--utn-azul-oscuro);
   margin-right: 10px;
-  min-width: 120px; /* Ensures labels have a minimum width for alignment */
+  min-width: 120px;
 }
 
-/* Replicated from .pasantia-detail .info-item span */
 .estudiante-detail .info-item span {
   color: #333;
 }
@@ -222,16 +213,15 @@ body {
   white-space: pre-line;
   height: 150px;
   overflow-y: auto;
-  border: 1px solid var(--utn-gris-medio); /* Borde gris medio */
+  border: 1px solid var(--utn-gris-medio); 
   padding: 10px;
   margin-top: 10px;
-  background-color: var(--utn-blanco); /* Fondo blanco */
+  background-color: var(--utn-blanco); 
   border-radius: 4px;
   resize: none;
-  color: var(--utn-azul-oscuro); /* Texto azul oscuro */
+  color: var(--utn-azul-oscuro); 
 }
 
-/* Botón de retroceso */
 .btn-back {
   background-color: var(--utn-azul-oscuro);
   color: white;
@@ -248,9 +238,6 @@ body {
   background-color: var(--utn-azul-medio);
 }
 
-
-
-/* Estilos para la sección de competencias */
 .competencias-section {
   margin: 15px 0;
   background-color: var(--utn-cian-claro);
@@ -328,26 +315,24 @@ body {
   border: none;
   color: var(--utn-azul-oscuro);
   cursor: pointer;
-  padding: 0 4px; /* Added horizontal padding to give it a bit more clickable area without being too wide */
-  font-size: 1em; /* Reduced font size, 1em relative to parent's 0.9em makes it appropriate */
-  line-height: 1; /* Ensures it sits nicely on the line */
+  padding: 0 4px; 
+  font-size: 1em; 
+  line-height: 1; 
   margin-left: 4px;
   transition: color 0.2s ease-in-out;
-  /* Optional: Add a subtle hover background to make it feel more like a button */
-  border-radius: 50%; /* Make it circular */
-  width: 1.5em; /* Define a fixed width */
-  height: 1.5em; /* Define a fixed height */
-  display: flex; /* Use flexbox to center the 'x' */
+  border-radius: 50%; 
+  width: 1.5em; 
+  height: 1.5em; 
+  display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .competencias-list li button:hover {
-  color: var(--utn-blanco); /* White 'x' on hover */
-  background-color: var(--utn-naranja-oscuro); /* Orange background on hover */
+  color: var(--utn-blanco); 
+  background-color: var(--utn-naranja-oscuro); 
 }
 
-/* Estilos para mostrar competencias en la lista de estudiantes */
 .estudiantes-list li span.competencias-preview {
   display: block;
   font-size: 0.8em;
@@ -355,7 +340,6 @@ body {
   margin-top: 4px;
 }
 
-/* Estilos para la sección de competencias en el detalle del estudiante */
 .estudiante-detail .competencias-list {
   margin-top: 8px;
 }
@@ -366,22 +350,21 @@ body {
   padding: 6px 12px;
 }
 
-/* Estilos para PuestosList */
 .puestos-list-container {
   padding: 30px;
 }
 
 .list-header {
   display: flex;
-  flex-direction: column; /* Apila título y botón verticalmente */
-  align-items: center; /* Centra los elementos horizontalmente */
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
 }
 
 
 .puestos-header h2 {
   color: var(--utn-azul-oscuro);
-  margin-bottom: 15px; /* Espacio entre el título y el botón */
+  margin-bottom: 15px;
 }
 
 .add-puesto-btn {
@@ -392,11 +375,11 @@ body {
   text-decoration: none;
   transition: background-color 0.2s ease-in-out;
   font-weight: bold;
-  display: inline-block; /* Asegura que el enlace se comporte como un bloque para los márgenes */
+  display: inline-block;
 }
 
 .add-puesto-btn:hover {
-  background-color: #0088cc; /* Cian ligeramente más oscuro */
+  background-color: #0088cc;
 }
 
 .puestos-table-container {
@@ -444,7 +427,7 @@ body {
 }
 
 .puesto-row:hover {
-  background-color: var(--utn-cian-claro); /* Fondo cian claro al pasar el mouse */
+  background-color: var(--utn-cian-claro);
 }
 
 .puesto-nombre {
@@ -458,10 +441,9 @@ body {
 }
 
 .estado-cell {
-  text-align: center; /* Centrar el badge de estado */
+  text-align: center;
 }
 
-/* Estilos para los badges de estado (nuevas clases para el nuevo componente) */
 .estado-badge {
   display: inline-block;
   padding: 0.4em 0.8em;
@@ -476,16 +458,16 @@ body {
 }
 
 .estado-badge.disponible {
-  background-color: var(--utn-verde-oscuro); /* Verde oscuro para disponible */
+  background-color: var(--utn-verde-oscuro); 
 }
 
 .estado-badge.ocupado {
-  background-color: red; /* Naranja oscuro para ocupado */
+  background-color: red; 
 }
 
 
 .estado-badge.cerrado {
-  background-color: #dc3545; /* Rojo para cerrado */
+  background-color: #dc3545; 
 }
 
 .empty-row td {
@@ -504,7 +486,6 @@ body {
   text-decoration: underline;
 }
 
-/* Estilos para PuestoForm */
 .puesto-form {
   padding: 30px;
 }
@@ -651,7 +632,6 @@ body {
   color: var(--utn-naranja-oscuro);
 }
 
-/* Estilos para PuestoDetail */
 .puesto-detail {
   padding: 30px;
 }
@@ -751,7 +731,7 @@ body {
   font-size: 1em;
   text-decoration: none;
   transition: background-color 0.2s ease-in-out;
-  margin-right: 10px; /* Espacio entre botones */
+  margin-right: 10px; 
 }
 
 .puesto-detail .btn-primary:hover {
@@ -759,7 +739,7 @@ body {
 }
 
 .puesto-detail .btn-danger {
-  background-color: #dc3545; /* Rojo para eliminar */
+  background-color: #dc3545; 
   color: var(--utn-blanco);
   padding: 10px 20px;
   border: none;
@@ -774,7 +754,6 @@ body {
   background-color: #c82333;
 }
 
-/* Estilos para mensajes de carga y error */
 .loading,
 .error-message,
 .alert-warning {
@@ -786,14 +765,14 @@ body {
 }
 
 .error-message {
-  background-color: #f8d7da; /* Fondo rojo claro para errores */
-  color: #721c24; /* Texto rojo oscuro */
+  background-color: #f8d7da; 
+  color: #721c24;
   border: 1px solid #f5c6cb;
 }
 
 .alert-warning {
-  background-color: #fff3cd; /* Fondo amarillo claro para advertencias */
-  color: #856404; /* Texto amarillo oscuro */
+  background-color: #fff3cd; 
+  color: #856404; 
   border: 1px solid #ffeeba;
 }
 

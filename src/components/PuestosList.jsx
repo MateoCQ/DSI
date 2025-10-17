@@ -61,7 +61,6 @@ const PuestosList = () => {
     setFilters(prev => ({ ...prev, [name]: value }));
   };
 
-  // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPuestos.slice(indexOfFirstItem, indexOfLastItem);
@@ -96,7 +95,6 @@ const PuestosList = () => {
         </Link>
       </div>
 
-      {/* Filters */}
       <div className="filters-container mb-4">
         <div className="row">
           <div className="col-md-4">
@@ -185,7 +183,6 @@ const PuestosList = () => {
         </table>
       </div>
 
-      {/* Pagination */}
       {filteredPuestos.length > itemsPerPage && (
         <nav aria-label="Paginación de puestos">
           <ul className="pagination justify-content-center">

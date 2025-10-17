@@ -5,7 +5,7 @@ const EmpresasList = () => {
   const [empresas, setEmpresas] = useState([]);
   const [filteredEmpresas, setFilteredEmpresas] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage] = useState(10); // Changed to 10 for consistency with PasantiasList
+  const [itemsPerPage] = useState(10);
   const [filters, setFilters] = useState({
     sector: '',
     nombre: ''
@@ -41,7 +41,6 @@ const EmpresasList = () => {
     setFilters(prev => ({ ...prev, [name]: value }));
   };
 
-  // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredEmpresas.slice(indexOfFirstItem, indexOfLastItem);
@@ -58,7 +57,6 @@ const EmpresasList = () => {
         </Link>
       </div>
 
-      {/* Filters */}
       <div className="filters-container mb-4">
         <div className="row">
           <div className="col-md-6">
@@ -124,7 +122,6 @@ const EmpresasList = () => {
         </table>
       </div>
 
-      {/* Pagination */}
       {filteredEmpresas.length > itemsPerPage && (
         <nav aria-label="Paginación de empresas">
           <ul className="pagination justify-content-center">

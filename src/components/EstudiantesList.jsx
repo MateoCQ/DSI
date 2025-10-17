@@ -42,7 +42,7 @@ const EstudiantesList = () => {
     }
 
     setFilteredEstudiantes(result);
-    setCurrentPage(1); // Reset to the first page when filters are applied
+    setCurrentPage(1); 
   }, [filters, estudiantes]);
 
   const handleFilterChange = (e) => {
@@ -50,7 +50,6 @@ const EstudiantesList = () => {
     setFilters(prev => ({ ...prev, [name]: value }));
   };
 
-  // Pagination logic
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredEstudiantes.slice(indexOfFirstItem, indexOfLastItem);
@@ -67,7 +66,6 @@ const EstudiantesList = () => {
         </Link>
       </div>
 
-      {/* Filters */}
       <div className="filters-container mb-4">
         <div className="row">
           <div className="col-md-4">
@@ -155,7 +153,6 @@ const EstudiantesList = () => {
         </table>
       </div>
 
-      {/* Pagination */}
       {filteredEstudiantes.length > itemsPerPage && (
         <nav aria-label="Paginación de estudiantes">
           <ul className="pagination justify-content-center">

@@ -12,7 +12,7 @@ const EstudianteDetail = () => {
   const [competenciaInput, setCompetenciaInput] = useState('');
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(''); // Added error state for consistency
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const cargarDatos = () => {
@@ -131,11 +131,11 @@ const EstudianteDetail = () => {
   }
 
   if (error) {
-    return <div className="alert alert-danger">{error}</div>; // Using Bootstrap alert
+    return <div className="alert alert-danger">{error}</div>; 
   }
 
   if (!estudiante) {
-    return <div className="alert alert-warning">No se encontró el estudiante solicitado</div>; // Using Bootstrap alert
+    return <div className="alert alert-warning">No se encontró el estudiante solicitado</div>;
   }
 
   return (
@@ -294,7 +294,7 @@ const EstudianteDetail = () => {
                 <button
                   type="button"
                   onClick={handleSave}
-                  className="btn btn-primary me-2" // Use me-2 for margin-right
+                  className="btn btn-primary me-2" 
                   disabled={
                     !formData.legajo || !formData.dni || !formData.nombre ||
                     !formData.apellido || !formData.fechaNacimiento ||
@@ -354,9 +354,9 @@ const EstudianteDetail = () => {
               {estudiante.competencias?.length > 0 && (
                 <div className="row mb-4">
                   <div className="col-12">
-                    <div className="related-info-card"> {/* Using related-info-card for consistency */}
+                    <div className="related-info-card"> 
                       <h3 className="card-title">Competencias</h3>
-                      <ul className="list-group list-group-flush"> {/* Using Bootstrap list-group */}
+                      <ul className="list-group list-group-flush"> 
                         {estudiante.competencias.map((competencia, index) => (
                           <li key={index} className="list-group-item">{competencia}</li>
                         ))}

@@ -35,7 +35,7 @@ const EmpresaForm = () => {
   };
 
   return (
-    <div className="empresa-form"> {/* Added parent div with class */}
+    <div className="empresa-form"> 
       <h2>Registrar Nueva Empresa</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -47,7 +47,7 @@ const EmpresaForm = () => {
             value={formData.nombre}
             onChange={handleChange}
             required
-            className="form-control" // Added class
+            className="form-control"
           />
         </div>
 
@@ -60,7 +60,7 @@ const EmpresaForm = () => {
             value={formData.direccion}
             onChange={handleChange}
             required
-            className="form-control" // Added class
+            className="form-control"
           />
         </div>
 
@@ -74,7 +74,7 @@ const EmpresaForm = () => {
             onChange={handleChange}
             pattern="[0-9]*"
             required
-            className="form-control" // Added class
+            className="form-control" 
           />
         </div>
 
@@ -87,7 +87,7 @@ const EmpresaForm = () => {
             value={formData.email}
             onChange={handleChange}
             required
-            className="form-control" // Added class
+            className="form-control" 
           />
         </div>
 
@@ -100,7 +100,7 @@ const EmpresaForm = () => {
             value={formData.sector}
             onChange={handleChange}
             required
-            className="form-control" // Added class
+            className="form-control" 
           />
         </div>
 
@@ -111,17 +111,17 @@ const EmpresaForm = () => {
             name="contacto"
             value={formData.contacto}
             onChange={handleChange}
-            className="form-control" // Changed from form-textarea to form-control
+            className="form-control"
           />
         </div>
 
-        <div className="form-actions"> {/* Added form-actions div */}
+        <div className="form-actions"> 
           <button type="submit" className="btn btn-primary">
             Guardar Empresa
           </button>
           <button
             type="button"
-            className="btn btn-secondary" // Added secondary button
+            className="btn btn-secondary"
             onClick={() => navigate('/empresas')}
           >
             Cancelar

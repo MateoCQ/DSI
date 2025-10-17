@@ -63,7 +63,6 @@ const PasantiasList = () => {
     return est ? `${est.nombre} ${est.apellido}` : 'Estudiante no encontrado';
   };
 
-  // Lógica de paginación
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPasantias.slice(indexOfFirstItem, indexOfLastItem);
@@ -88,8 +87,7 @@ const PasantiasList = () => {
           Registrar Nueva Pasantía
         </Link>
       </div>
-      
-      {/* Filtros */}
+
       <div className="filters-container mb-4">
         <div className="row">
           <div className="col-md-4">
@@ -170,7 +168,6 @@ const PasantiasList = () => {
         </table>
       </div>
 
-      {/* Paginación */}
       {filteredPasantias.length > itemsPerPage && (
         <nav aria-label="Paginación de pasantías">
           <ul className="pagination justify-content-center">

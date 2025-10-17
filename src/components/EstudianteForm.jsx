@@ -19,7 +19,6 @@ const EstudianteForm = () => {
   const [legajoError, setLegajoError] = useState(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Verificar si el legajo ya existe en localStorage
   const checkLegajoUnico = (legajo) => {
     const estudiantes = JSON.parse(localStorage.getItem('estudiantes')) || [];
     return !estudiantes.some(est => est.legajo === legajo);
@@ -28,14 +27,13 @@ const EstudianteForm = () => {
   const handleChange = async (e) => {
     const { name, value } = e.target;
 
-    if (name === 'telefono' || name === 'dni') { // Added dni here
+    if (name === 'telefono' || name === 'dni') { 
       const soloNumeros = value.replace(/[^0-9]/g, '');
       setFormData(prev => ({ ...prev, [name]: soloNumeros }));
     } else if (name === 'legajo') {
       const soloNumeros = value.replace(/[^0-9]/g, '').slice(0, 5);
       setFormData(prev => ({ ...prev, [name]: soloNumeros }));
 
-      // Validar unicidad solo cuando tenga 5 dígitos
       if (soloNumeros.length === 5) {
         const esUnico = checkLegajoUnico(soloNumeros);
         setLegajoError(esUnico ? null : 'Este legajo ya está registrado');
@@ -67,7 +65,6 @@ const EstudianteForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Validación final antes de enviar
     if (formData.legajo.length !== 5) {
       setLegajoError('El legajo debe tener 5 dígitos');
       return;
@@ -97,10 +94,10 @@ const EstudianteForm = () => {
   };
 
   return (
-    <div className="estudiante-form"> {/* Added parent div with class */}
+    <div className="estudiante-form"> 
       <h2>Registrar Nuevo Estudiante</h2>
       <form onSubmit={handleSubmit}>
-        <div className="form-row"> {/* Grouping fields in a row */}
+        <div className="form-row"> 
           <div className={`form-group col-md-6 ${legajoError ? 'has-error' : ''}`}>
             <label htmlFor="legajo">Legajo</label>
             <input
@@ -112,7 +109,7 @@ const EstudianteForm = () => {
               pattern="[0-9]{5}"
               title="El legajo debe contener exactamente 5 dígitos"
               required
-              className="form-control" // Added class
+              className="form-control" 
             />
             {legajoError && <span className="error-message">{legajoError}</span>}
           </div>
@@ -128,7 +125,7 @@ const EstudianteForm = () => {
               pattern="[0-9]{8}"
               title="El DNI debe contener exactamente 8 dígitos"
               required
-              className="form-control" // Added class
+              className="form-control" 
             />
           </div>
         </div>
@@ -143,7 +140,7 @@ const EstudianteForm = () => {
               value={formData.nombre}
               onChange={handleChange}
               required
-              className="form-control" // Added class
+              className="form-control" 
             />
           </div>
 
@@ -156,7 +153,7 @@ const EstudianteForm = () => {
               value={formData.apellido}
               onChange={handleChange}
               required
-              className="form-control" // Added class
+              className="form-control" 
             />
           </div>
         </div>
@@ -171,7 +168,7 @@ const EstudianteForm = () => {
               value={formData.fechaNacimiento}
               onChange={handleChange}
               required
-              className="form-control" // Added class
+              className="form-control" 
             />
           </div>
 
@@ -184,7 +181,7 @@ const EstudianteForm = () => {
               value={formData.carrera}
               onChange={handleChange}
               required
-              className="form-control" // Added class
+              className="form-control" 
             />
           </div>
         </div>
@@ -199,7 +196,7 @@ const EstudianteForm = () => {
               value={formData.email}
               onChange={handleChange}
               required
-              className="form-control" // Added class
+              className="form-control" 
             />
           </div>
 
@@ -213,7 +210,7 @@ const EstudianteForm = () => {
               onChange={handleChange}
               pattern="[0-9]*"
               required
-              className="form-control" // Added class
+              className="form-control"
             />
           </div>
         </div>
@@ -227,7 +224,7 @@ const EstudianteForm = () => {
               value={competenciaInput}
               onChange={(e) => setCompetenciaInput(e.target.value)}
               disabled={formData.competencias.length >= 10}
-              className="form-control" // Added class
+              className="form-control" 
             />
             <button
               type="button"
@@ -262,13 +259,13 @@ const EstudianteForm = () => {
           <button
             type="submit"
             disabled={isSubmitting || legajoError || formData.legajo.length !== 5}
-            className="btn btn-primary" // Added class
+            className="btn btn-primary" 
           >
             {isSubmitting ? 'Guardando...' : 'Guardar Estudiante'}
           </button>
           <button
             type="button"
-            className="btn btn-secondary" // Added secondary button
+            className="btn btn-secondary" 
             onClick={() => navigate('/estudiantes')}
           >
             Cancelar

@@ -53,7 +53,7 @@ const PuestoForm = () => {
   };
 
   return (
-    <div className="puesto-form"> {/* Added parent div with class */}
+    <div className="puesto-form"> 
       <h2>Registrar Nuevo Puesto</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">
@@ -65,7 +65,7 @@ const PuestoForm = () => {
             value={formData.nombre}
             onChange={handleChange}
             required
-            className="form-control" // Added class
+            className="form-control"
           />
         </div>
 
@@ -77,7 +77,7 @@ const PuestoForm = () => {
             value={formData.descripcion}
             onChange={handleChange}
             required
-            className="form-control" // Changed from form-textarea to form-control
+            className="form-control" 
           />
         </div>
 
@@ -101,7 +101,7 @@ const PuestoForm = () => {
               value={formData.empresaId}
               onChange={handleChange}
               required
-              className="form-control" // Added class
+              className="form-control" 
             >
               <option value="">Seleccione una empresa</option>
               {empresas.map(empresa => (
@@ -121,7 +121,7 @@ const PuestoForm = () => {
               placeholder="Añadir competencia"
               value={competenciaInput}
               onChange={(e) => setCompetenciaInput(e.target.value)}
-              className="form-control" // Added class
+              className="form-control" 
             />
             <button type="button" onClick={handleAddCompetencia}>+</button>
           </div>
@@ -135,13 +135,13 @@ const PuestoForm = () => {
           </ul>
         </div>
 
-        <div className="form-actions"> {/* Added form-actions div */}
+        <div className="form-actions"> 
           <button type="submit" className="btn btn-primary">
             Guardar Puesto
           </button>
           <button
             type="button"
-            className="btn btn-secondary" // Added secondary button
+            className="btn btn-secondary"
             onClick={() => navigate('/puestos')}
           >
             Cancelar

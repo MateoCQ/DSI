@@ -15,20 +15,18 @@ const PasantiaForm = () => {
   });
   const [puestos, setPuestos] = useState([]);
   const [estudiantes, setEstudiantes] = useState([]);
-  const [empresas, setEmpresas] = useState([]); // Nuevo estado para empresas
+  const [empresas, setEmpresas] = useState([]); 
   const [puestosDisponibles, setPuestosDisponibles] = useState([]);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Cargar todos los datos necesarios
     const cargarDatos = async () => {
       try {
         const puestosData = JSON.parse(localStorage.getItem('puestos')) || [];
         const empresasData = JSON.parse(localStorage.getItem('empresas')) || [];
         const estudiantesData = JSON.parse(localStorage.getItem('estudiantes')) || [];
-        
-        // Enriquecer puestos con información de empresa
+
         const puestosConEmpresa = puestosData.map(puesto => {
           const empresaAsociada = empresasData.find(e => e.id === puesto.empresaId);
           return {
@@ -61,7 +59,6 @@ const PasantiaForm = () => {
     e.preventDefault();
     setError('');
 
-    // Validaciones
     if (new Date(formData.fechaFin) < new Date(formData.fechaInicio)) {
       setError('La fecha de finalización no puede ser anterior a la fecha de inicio');
       return;
@@ -83,7 +80,6 @@ const PasantiaForm = () => {
       return;
     }
 
-    // Procesar el formulario
     const pasantias = JSON.parse(localStorage.getItem('pasantias')) || [];
     const puestosActuales = JSON.parse(localStorage.getItem('puestos')) || [];
 
@@ -97,7 +93,6 @@ const PasantiaForm = () => {
                        estudiantes.find(e => e.id === formData.estudianteId)?.apellido
     };
 
-    // Actualizar estado del puesto
     const puestosActualizados = puestosActuales.map(puesto => {
       if (puesto.id === formData.puestoId) {
         return { ...puesto, estado: 'ocupado' };
@@ -105,12 +100,10 @@ const PasantiaForm = () => {
       return puesto;
     });
 
-    // Guardar cambios
     try {
       localStorage.setItem('pasantias', JSON.stringify([...pasantias, nuevaPasantia]));
       localStorage.setItem('puestos', JSON.stringify(puestosActualizados));
-      
-      // Actualizar estados locales
+
       const puestosActualizadosConEmpresa = puestosActualizados.map(p => {
         const empresa = empresas.find(e => e.id === p.empresaId);
         return {
@@ -171,7 +164,6 @@ const PasantiaForm = () => {
           )}
         </div>
 
-        {/* Resto del formulario se mantiene igual */}
         <div className="form-group">
           <label>Estudiante</label>
           <select 

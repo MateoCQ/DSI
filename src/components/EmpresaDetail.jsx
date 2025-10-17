@@ -16,7 +16,7 @@ const EmpresaDetail = () => {
   });
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(''); // Added for general error messages
+  const [error, setError] = useState('');
 
   useEffect(() => {
     const cargarDatosEmpresa = () => {
@@ -219,7 +219,7 @@ const EmpresaDetail = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => { setEditMode(false); setErrors({}); setFormData(empresa); }} // Reset form data and errors on cancel
+                  onClick={() => { setEditMode(false); setErrors({}); setFormData(empresa); }}
                   className="btn btn-secondary"
                 >
                   Cancelar

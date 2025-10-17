@@ -9,7 +9,7 @@ const PuestoDetail = () => {
   const [empresa, setEmpresa] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(''); // Added for general error messages
+  const [error, setError] = useState('');
   const [competenciaInput, setCompetenciaInput] = useState('');
   const [errors, setErrors] = useState({});
 
@@ -48,7 +48,6 @@ const PuestoDetail = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user types
     if (errors[name]) {
       setErrors(prev => ({ ...prev, [name]: '' }));
     }
@@ -104,7 +103,7 @@ const PuestoDetail = () => {
     const clases = {
       disponible: 'badge-success',
       ocupado: 'badge-danger',
-      finalizado: 'badge-secondary' // Assuming 'finalizado' could be another state
+      finalizado: 'badge-secondary'
     };
     return <span className={`badge ${clases[estado] || 'badge-secondary'}`}>{estado}</span>;
   };
@@ -158,7 +157,7 @@ const PuestoDetail = () => {
                     >
                       <option value="disponible">Disponible</option>
                       <option value="ocupado">Ocupado</option>
-                      <option value="finalizado">Finalizado</option> {/* Added for consistency if needed */}
+                      <option value="finalizado">Finalizado</option>
                     </select>
                   </div>
                 </div>
@@ -232,7 +231,7 @@ const PuestoDetail = () => {
                 </button>
                 <button
                   type="button"
-                  onClick={() => { setEditMode(false); setErrors({}); setFormData(puesto); setCompetenciaInput(''); }} // Reset form data, errors, and competence input on cancel
+                  onClick={() => { setEditMode(false); setErrors({}); setFormData(puesto); setCompetenciaInput(''); }}
                   className="btn btn-secondary"
                 >
                   Cancelar
